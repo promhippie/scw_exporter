@@ -58,7 +58,7 @@ func main() {
 			},
 			&cli.StringFlag{
 				Name:        "web.address",
-				Value:       "0.0.0.0:9109",
+				Value:       "0.0.0.0:9503",
 				Usage:       "Address to bind the metrics server",
 				EnvVars:     []string{"SCW_EXPORTER_WEB_ADDRESS"},
 				Destination: &cfg.Server.Addr,
