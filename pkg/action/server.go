@@ -127,45 +127,55 @@ func handler(cfg *config.Config, logger log.Logger, client *scw.ScalewayAPI) *ch
 	requestDuration := exporter.RequestDuration()
 	r.MustRegister(requestDuration)
 
-	r.MustRegister(exporter.NewDashboardCollector(
-		logger,
-		client,
-		requestFailures,
-		requestDuration,
-		cfg.Target.Timeout,
-	))
+	if cfg.Collector.Dashboard {
+		r.MustRegister(exporter.NewDashboardCollector(
+			logger,
+			client,
+			requestFailures,
+			requestDuration,
+			cfg.Target.Timeout,
+		))
+	}
 
-	r.MustRegister(exporter.NewSecurityGroupCollector(
-		logger,
-		client,
-		requestFailures,
-		requestDuration,
-		cfg.Target.Timeout,
-	))
+	if cfg.Collector.SecurityGroups {
+		r.MustRegister(exporter.NewSecurityGroupCollector(
+			logger,
+			client,
+			requestFailures,
+			requestDuration,
+			cfg.Target.Timeout,
+		))
+	}
 
-	r.MustRegister(exporter.NewServerCollector(
-		logger,
-		client,
-		requestFailures,
-		requestDuration,
-		cfg.Target.Timeout,
-	))
+	if cfg.Collector.Servers {
+		r.MustRegister(exporter.NewServerCollector(
+			logger,
+			client,
+			requestFailures,
+			requestDuration,
+			cfg.Target.Timeout,
+		))
+	}
 
-	r.MustRegister(exporter.NewSnapshotCollector(
-		logger,
-		client,
-		requestFailures,
-		requestDuration,
-		cfg.Target.Timeout,
-	))
+	if cfg.Collector.Snapshots {
+		r.MustRegister(exporter.NewSnapshotCollector(
+			logger,
+			client,
+			requestFailures,
+			requestDuration,
+			cfg.Target.Timeout,
+		))
+	}
 
-	r.MustRegister(exporter.NewVolumeCollector(
-		logger,
-		client,
-		requestFailures,
-		requestDuration,
-		cfg.Target.Timeout,
-	))
+	if cfg.Collector.Volumes {
+		r.MustRegister(exporter.NewVolumeCollector(
+			logger,
+			client,
+			requestFailures,
+			requestDuration,
+			cfg.Target.Timeout,
+		))
+	}
 
 	mux.NotFound(func(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, cfg.Server.Path, http.StatusMovedPermanently)
