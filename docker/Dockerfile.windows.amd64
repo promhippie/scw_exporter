@@ -7,8 +7,6 @@ LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" `
   org.label-schema.schema-version="1.0"
 
 EXPOSE 9503
-
 ENTRYPOINT ["c:\\scw_exporter.exe"]
-CMD ["server"]
 
 COPY bin/scw_exporter.exe c:\scw_exporter.exe
