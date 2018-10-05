@@ -98,6 +98,41 @@ func main() {
 				EnvVars:     []string{"SCW_EXPORTER_REGION"},
 				Destination: &cfg.Target.Region,
 			},
+			&cli.BoolFlag{
+				Name:        "collector.dashboard",
+				Value:       true,
+				Usage:       "Enable collector for dashboard",
+				EnvVars:     []string{"SCW_EXPORTER_COLLECTOR_DASHBOARD"},
+				Destination: &cfg.Collector.Dashboard,
+			},
+			&cli.BoolFlag{
+				Name:        "collector.security-groups",
+				Value:       true,
+				Usage:       "Enable collector for security groups",
+				EnvVars:     []string{"SCW_EXPORTER_COLLECTOR_SECURITY_GROUPS"},
+				Destination: &cfg.Collector.SecurityGroups,
+			},
+			&cli.BoolFlag{
+				Name:        "collector.servers",
+				Value:       true,
+				Usage:       "Enable collector for servers",
+				EnvVars:     []string{"SCW_EXPORTER_COLLECTOR_SERVERS"},
+				Destination: &cfg.Collector.Servers,
+			},
+			&cli.BoolFlag{
+				Name:        "collector.snapshots",
+				Value:       true,
+				Usage:       "Enable collector for snapshots",
+				EnvVars:     []string{"SCW_EXPORTER_COLLECTOR_SNAPSHOTS"},
+				Destination: &cfg.Collector.Snapshots,
+			},
+			&cli.BoolFlag{
+				Name:        "collector.volumes",
+				Value:       true,
+				Usage:       "Enable collector for volumes",
+				EnvVars:     []string{"SCW_EXPORTER_COLLECTOR_VOLUMES"},
+				Destination: &cfg.Collector.Volumes,
+			},
 		},
 		Action: func(c *cli.Context) error {
 			logger := setupLogger(cfg)
