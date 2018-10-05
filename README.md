@@ -8,12 +8,12 @@
 [![Go Report](http://goreportcard.com/badge/github.com/promhippie/scw_exporter)](http://goreportcard.com/report/github.com/promhippie/scw_exporter)
 [![](https://images.microbadger.com/badges/image/promhippie/scw-exporter.svg)](http://microbadger.com/images/promhippie/scw-exporter "Get your own image badge on microbadger.com")
 
-TBD
+An exporter for [Prometheus](https://prometheus.io/) that collects metrics from [Scaleway](https://cloud.scaleway.com).
 
 
 ## Install
 
-You can download prebuilt binaries from our [GitHub releases](https://github.com/promhippie/scw_exporter/releases), or you can use our Docker images published on [Docker Hub](https://hub.docker.com/r/promhippie/scw_exporter/tags/).
+You can download prebuilt binaries from our [GitHub releases](https://github.com/promhippie/scw_exporter/releases), or you can use our Docker images published on [Docker Hub](https://hub.docker.com/r/promhippie/scw_exporter/tags/). If you need further guidance how to install this take a look at our [documentation](https://promhippie.github.io/scw_exporter/#getting-started).
 
 
 ## Development
