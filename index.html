@@ -497,6 +497,42 @@ access the exporter at
 <a href="http://localhost:9503/metrics">http://localhost:9503/metrics</a> and
 <a href="https://prometheus.io">Prometheus</a> at <a href="http://localhost:9090">http://localhost:9090</a>.</p>
 <h2 id="configuration">Configuration</h2>
+<dl>
+<dt>SCW_EXPORTER_LOG_LEVEL</dt>
+<dd>Only log messages with given severity, defaults to <code>info</code></dd>
+<dt>SCW_EXPORTER_LOG_PRETTY</dt>
+<dd>Enable pretty messages for logging, defaults to <code>false</code></dd>
+<dt>SCW_EXPORTER_WEB_ADDRESS</dt>
+<dd>Address to bind the metrics server, defaults to <code>0.0.0.0:9503</code></dd>
+<dt>SCW_EXPORTER_WEB_PATH</dt>
+<dd>Path to bind the metrics server, defaults to <code>/metrics</code></dd>
+<dt>SCW_EXPORTER_REQUEST_TIMEOUT</dt>
+<dd>Request timeout as duration, defaults to <code>5s</code></dd>
+<dt>SCW_EXPORTER_ACESS_KEY</dt>
+<dd>Access key for the Scaleway API</dd>
+<dt>SCW_EXPORTER_SECRET_KEY</dt>
+<dd>Secret key for the Scaleway API</dd>
+<dt>SCW_EXPORTER_ORG</dt>
+<dd>Organization for the Scaleway API</dd>
+<dt>SCW_EXPORTER_PROJECT</dt>
+<dd>Project for the Scaleway API</dd>
+<dt>SCW_EXPORTER_REGION</dt>
+<dd>Region for the Scaleway API</dd>
+<dt>SCW_EXPORTER_ZONE</dt>
+<dd>Zone for the Scaleway API</dd>
+<dt>SCW_EXPORTER_COLLECTOR_DASHBOARD</dt>
+<dd>Enable collector for dashboard, defaults to <code>true</code></dd>
+<dt>SCW_EXPORTER_COLLECTOR_SECURITY_GROUPS</dt>
+<dd>Enable collector for security groups, defaults to <code>true</code></dd>
+<dt>SCW_EXPORTER_COLLECTOR_SERVERS</dt>
+<dd>Enable collector for servers, defaults to <code>true</code></dd>
+<dt>SCW_EXPORTER_COLLECTOR_BAREMETAL</dt>
+<dd>Enable collector for servers, defaults to <code>true</code></dd>
+<dt>SCW_EXPORTER_COLLECTOR_SNAPSHOTS</dt>
+<dd>Enable collector for snapshots, defaults to <code>true</code></dd>
+<dt>SCW_EXPORTER_COLLECTOR_VOLUMES</dt>
+<dd>Enable collector for volumes, defaults to <code>true</code></dd>
+</dl>
 <h3 id="web-configuration">Web Configuration</h3>
 <p>If you want to secure the service by TLS or by some basic authentication you can
 provide a <code>YAML</code> configuration file whch follows the <a href="https://prometheus.io">Prometheus</a>
