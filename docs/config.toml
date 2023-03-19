@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "Scaleway Exporter"
 pygmentsUseClasses = true
 
+[markup.goldmark.renderer]
+  unsafe = true
+
 [blackfriday]
   angledQuotes = true
   fractions = false
@@ -12,5 +15,5 @@ pygmentsUseClasses = true
 
 [params]
   author = "Thomas Boerger"
-  description = "Export Scaleway metrics for Prometheus"
+  description = "Prometheus exporter for Scaleway"
   keywords = "prometheus, exporter, scaleway, scw"

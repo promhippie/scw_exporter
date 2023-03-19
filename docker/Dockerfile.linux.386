@@ -1,0 +1,13 @@
+FROM i386/alpine:3.17@sha256:4aa08ef415aecc80814cb42fa41b658480779d80c77ab151812e0d657580f0ae AS build
+RUN apk add --no-cache ca-certificates mailcap
+
+FROM scratch
+
+EXPOSE 9503
+ENTRYPOINT ["/usr/bin/scw_exporter"]
+HEALTHCHECK CMD ["/usr/bin/scw_exporter", "health"]
+
+COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=build /etc/mime.types /etc/
+
+COPY bin/scw_exporter /usr/bin/scw_exporter
