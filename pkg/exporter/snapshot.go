@@ -3,38 +3,48 @@ package exporter
 import (
 	"time"
 
-	"github.com/go-kit/kit/log"
-	"github.com/go-kit/kit/log/level"
+	"github.com/go-kit/log"
+	"github.com/go-kit/log/level"
 	"github.com/prometheus/client_golang/prometheus"
+	"github.com/promhippie/scw_exporter/pkg/config"
 
-	scw "github.com/scaleway/go-scaleway"
+	"github.com/scaleway/scaleway-sdk-go/api/instance/v1"
+	"github.com/scaleway/scaleway-sdk-go/scw"
 )
 
 // SnapshotCollector collects metrics about the snapshots.
 type SnapshotCollector struct {
-	client   *scw.ScalewayAPI
+	client   *scw.Client
+	instance *instance.API
 	logger   log.Logger
 	failures *prometheus.CounterVec
 	duration *prometheus.HistogramVec
-	timeout  time.Duration
+	config   config.Target
+	org      *string
+	project  *string
 
-	Available *prometheus.Desc
-	Size      *prometheus.Desc
-	Created   *prometheus.Desc
-	Modified  *prometheus.Desc
+	Available  *prometheus.Desc
+	Size       *prometheus.Desc
+	VolumeType *prometheus.Desc
+	State      *prometheus.Desc
+	Created    *prometheus.Desc
+	Modified   *prometheus.Desc
 }
 
 // NewSnapshotCollector returns a new SnapshotCollector.
-func NewSnapshotCollector(logger log.Logger, client *scw.ScalewayAPI, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, timeout time.Duration) *SnapshotCollector {
-	failures.WithLabelValues("snapshot").Add(0)
+func NewSnapshotCollector(logger log.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *SnapshotCollector {
+	if failures != nil {
+		failures.WithLabelValues("snapshot").Add(0)
+	}
 
-	labels := []string{"id", "name"}
-	return &SnapshotCollector{
+	labels := []string{"id", "name", "zone", "org", "project"}
+	collector := &SnapshotCollector{
 		client:   client,
+		instance: instance.NewAPI(client),
 		logger:   log.With(logger, "collector", "snapshot"),
 		failures: failures,
 		duration: duration,
-		timeout:  timeout,
+		config:   cfg,
 
 		Available: prometheus.NewDesc(
 			"scw_snapshot_available",
@@ -45,6 +55,18 @@ func NewSnapshotCollector(logger log.Logger, client *scw.ScalewayAPI, failures *
 		Size: prometheus.NewDesc(
 			"scw_snapshot_size_bytes",
 			"Size of the snapshot in bytes",
+			labels,
+			nil,
+		),
+		VolumeType: prometheus.NewDesc(
+			"scw_snapshot_type",
+			"Type of the snapshot",
+			labels,
+			nil,
+		),
+		State: prometheus.NewDesc(
+			"scw_snapshot_state",
+			"State of the snapshot",
 			labels,
 			nil,
 		),
@@ -61,92 +83,153 @@ func NewSnapshotCollector(logger log.Logger, client *scw.ScalewayAPI, failures *
 			nil,
 		),
 	}
+
+	if cfg.Org != "" {
+		collector.org = scw.StringPtr(cfg.Org)
+	}
+
+	if cfg.Project != "" {
+		collector.project = scw.StringPtr(cfg.Project)
+	}
+
+	return collector
+}
+
+// Metrics simply returns the list metric descriptors for generating a documentation.
+func (c *SnapshotCollector) Metrics() []*prometheus.Desc {
+	return []*prometheus.Desc{
+		c.Available,
+		c.Size,
+		c.VolumeType,
+		c.State,
+		c.Created,
+		c.Modified,
+	}
 }
 
 // Describe sends the super-set of all possible descriptors of metrics collected by this Collector.
 func (c *SnapshotCollector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- c.Available
 	ch <- c.Size
+	ch <- c.VolumeType
+	ch <- c.State
 	ch <- c.Created
 	ch <- c.Modified
 }
 
 // Collect is called by the Prometheus registry when collecting metrics.
 func (c *SnapshotCollector) Collect(ch chan<- prometheus.Metric) {
-	now := time.Now()
-	snapshots, err := c.client.GetSnapshots()
-	c.duration.WithLabelValues("snapshot").Observe(time.Since(now).Seconds())
+	for _, zone := range affectedZones(c.client) {
+		now := time.Now()
+		resp, err := c.instance.ListSnapshots(&instance.ListSnapshotsRequest{
+			Zone:         zone,
+			Organization: c.org,
+			Project:      c.project,
+		}, scw.WithAllPages())
+		c.duration.WithLabelValues("snapshot").Observe(time.Since(now).Seconds())
 
-	if err != nil {
-		level.Error(c.logger).Log(
-			"msg", "Failed to fetch snapshots",
-			"err", err,
-		)
-
-		c.failures.WithLabelValues("snapshot").Inc()
-		return
-	}
-
-	level.Debug(c.logger).Log(
-		"msg", "Fetched snapshots",
-		"count", len(*snapshots),
-	)
-
-	for _, snapshot := range *snapshots {
-		var (
-			created float64
-			updated float64
-		)
-
-		labels := []string{
-			snapshot.Identifier,
-			snapshot.Name,
-		}
-
-		ch <- prometheus.MustNewConstMetric(
-			c.Available,
-			prometheus.GaugeValue,
-			1.0,
-			labels...,
-		)
-
-		ch <- prometheus.MustNewConstMetric(
-			c.Size,
-			prometheus.GaugeValue,
-			float64(snapshot.Size),
-			labels...,
-		)
-
-		if num, err := time.Parse("2006-01-02T15:04:05.000000-07:00", snapshot.CreationDate); err == nil {
-			created = float64(num.Unix())
-		} else {
+		if err != nil {
 			level.Error(c.logger).Log(
-				"msg", "Failed to parse creation time",
+				"msg", "Failed to fetch snapshots",
+				"zone", zone,
 				"err", err,
 			)
+
+			c.failures.WithLabelValues("snapshot").Inc()
+			return
 		}
 
-		ch <- prometheus.MustNewConstMetric(
-			c.Created,
-			prometheus.GaugeValue,
-			created,
-			labels...,
+		level.Debug(c.logger).Log(
+			"msg", "Fetched snapshots",
+			"zone", zone,
+			"count", resp.TotalCount,
 		)
 
-		if num, err := time.Parse("2006-01-02T15:04:05.000000-07:00", snapshot.ModificationDate); err == nil {
-			updated = float64(num.Unix())
-		} else {
-			level.Error(c.logger).Log(
-				"msg", "Failed to parse modification time",
-				"err", err,
+		for _, snapshot := range resp.Snapshots {
+			var (
+				volumeType float64
+				state      float64
 			)
-		}
 
-		ch <- prometheus.MustNewConstMetric(
-			c.Modified,
-			prometheus.GaugeValue,
-			updated,
-			labels...,
-		)
+			labels := []string{
+				snapshot.ID,
+				snapshot.Name,
+				snapshot.Zone.String(),
+				snapshot.Organization,
+				snapshot.Project,
+			}
+
+			ch <- prometheus.MustNewConstMetric(
+				c.Available,
+				prometheus.GaugeValue,
+				1.0,
+				labels...,
+			)
+
+			ch <- prometheus.MustNewConstMetric(
+				c.Size,
+				prometheus.GaugeValue,
+				float64(snapshot.Size),
+				labels...,
+			)
+
+			switch val := snapshot.VolumeType; val {
+			case instance.VolumeVolumeTypeLSSD:
+				volumeType = 1.0
+			case instance.VolumeVolumeTypeBSSD:
+				volumeType = 2.0
+			case instance.VolumeVolumeTypeUnified:
+				volumeType = 3.0
+			default:
+				volumeType = 0.0
+			}
+
+			ch <- prometheus.MustNewConstMetric(
+				c.VolumeType,
+				prometheus.GaugeValue,
+				volumeType,
+				labels...,
+			)
+
+			switch val := snapshot.State; val {
+			case instance.SnapshotStateAvailable:
+				state = 1.0
+			case instance.SnapshotStateSnapshotting:
+				state = 2.0
+			case instance.SnapshotStateInvalidData:
+				state = 3.0
+			case instance.SnapshotStateImporting:
+				state = 4.0
+			case instance.SnapshotStateExporting:
+				state = 5.0
+			default:
+				state = 0.0
+			}
+
+			ch <- prometheus.MustNewConstMetric(
+				c.State,
+				prometheus.GaugeValue,
+				state,
+				labels...,
+			)
+
+			if snapshot.CreationDate != nil {
+				ch <- prometheus.MustNewConstMetric(
+					c.Created,
+					prometheus.GaugeValue,
+					float64(snapshot.CreationDate.Unix()),
+					labels...,
+				)
+			}
+
+			if snapshot.ModificationDate != nil {
+				ch <- prometheus.MustNewConstMetric(
+					c.Modified,
+					prometheus.GaugeValue,
+					float64(snapshot.ModificationDate.Unix()),
+					labels...,
+				)
+			}
+		}
 	}
 }
