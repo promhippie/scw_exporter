@@ -36,7 +36,7 @@ jobs:
 
       - name: Setup golang
         id: golang
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v4
         with:
           go-version: ^1.19.0
 
@@ -135,7 +135,7 @@ jobs:
 
       - name: Hub tags
         id: hubTags
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           images: promhippie/scw-exporter
@@ -158,7 +158,7 @@ jobs:
 
       - name: Quay tags
         id: quayTags
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           images: quay.io/promhippie/scw-exporter
@@ -181,7 +181,7 @@ jobs:
 
       - name: Ghcr tags
         id: ghcrTags
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           images: ghcr.io/promhippie/scw-exporter
