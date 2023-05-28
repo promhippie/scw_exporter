@@ -10,7 +10,7 @@ require (
 	github.com/prometheus/client_golang v1.15.1
 	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.17
 	github.com/stretchr/testify v1.8.3
-	github.com/urfave/cli/v2 v2.25.3
+	github.com/urfave/cli/v2 v2.25.4
 )
 
 require (
