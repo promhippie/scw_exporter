@@ -8,7 +8,7 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/oklog/run v1.1.0
 	github.com/prometheus/client_golang v1.16.0
-	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.20
+	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.21
 	github.com/stretchr/testify v1.8.4
 	github.com/urfave/cli/v2 v2.25.7
 )
