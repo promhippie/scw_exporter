@@ -83,7 +83,7 @@
 		line-height: 1.6;
 		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 		color: #242424;
-		max-width: 800px;
+		max-width: 900px;
 		margin: 5% auto;
 	}
 
@@ -130,6 +130,7 @@
 	h3 {
 		font-size: 18px;
 		margin-bottom: 0.3em;
+		margin-top: 1.0em;
 	}
 
 	h1 small a {
@@ -230,6 +231,11 @@
 
 	dl dt {
 		font-weight: bold;
+		margin-top: 10px;
+	}
+
+	dl dt:first-child {
+		margin-top: 0px;
 	}
 
 	dl dd {
@@ -487,6 +493,19 @@ support for it, for details about the config format look at the
 </span></span><span class="line"><span class="cl">      - SCW_EXPORTER_SECRET_KEY=your-secret-key
 </span></span><span class="line"><span class="cl">      - SCW_EXPORTER_LOG_PRETTY=true
 </span></span></code></pre></div>
+<p>If you want to provide the required secrets from a file it&rsquo;s also possible. For
+this use case you can write the secret to a file on any path and reference it
+with the following format:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl">  scw_exporter:
+</span></span><span class="line"><span class="cl">    image: promhippie/scw-exporter:latest
+</span></span><span class="line"><span class="cl">    restart: always
+</span></span><span class="line"><span class="cl">    environment:
+</span></span><span class="line"><span class="cl"><span class="gd">-     - SCW_EXPORTER_ACESS_KEY=your-access-key
+</span></span></span><span class="line"><span class="cl"><span class="gd">-     - SCW_EXPORTER_SECRET_KEY=your-secret-key
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+     - SCW_EXPORTER_ACESS_KEY=file://path/to/secret/file/with/access-key
+</span></span></span><span class="line"><span class="cl"><span class="gi">+     - SCW_EXPORTER_SECRET_KEY=file://path/to/secret/file/with/secret-key
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span>      - SCW_EXPORTER_LOG_PRETTY=true
+</span></span></code></pre></div>
 <p>Finally the exporter should be configured fine, let&rsquo;s start this stack with
 <a href="https://docs.docker.com/compose/">docker-compose</a>, you just need to execute <code>docker-compose up</code> within
 the directory where you have stored the <code>prometheus.yml</code> and
@@ -506,6 +525,12 @@ access the exporter at
 <dd>Address to bind the metrics server, defaults to <code>0.0.0.0:9503</code></dd>
 <dt>SCW_EXPORTER_WEB_PATH</dt>
 <dd>Path to bind the metrics server, defaults to <code>/metrics</code></dd>
+<dt>SCW_EXPORTER_WEB_PPROF</dt>
+<dd>Enable pprof debugging for server, defaults to <code>false</code></dd>
+<dt>SCW_EXPORTER_WEB_TIMEOUT</dt>
+<dd>Server metrics endpoint timeout, defaults to <code>10s</code></dd>
+<dt>SCW_EXPORTER_WEB_CONFIG</dt>
+<dd>Path to web-config file</dd>
 <dt>SCW_EXPORTER_REQUEST_TIMEOUT</dt>
 <dd>Request timeout as duration, defaults to <code>5s</code></dd>
 <dt>SCW_EXPORTER_ACESS_KEY</dt>
@@ -545,91 +570,91 @@ you will always get the standard metrics exported by the Golang client of
 take a look at the <a href="https://github.com/prometheus/client_golang/blob/master/prometheus/process_collector.go">process collector</a> and the
 <a href="https://github.com/prometheus/client_golang/blob/master/prometheus/go_collector.go">Go collector</a>.</p>
 <dl>
-<dt>scw_dashboard_images_count{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_images_count{zone}</dt>
 <dd>Count of used images</dd>
-<dt>scw_dashboard_ips_count{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_ips_count{zone}</dt>
 <dd>Count of used IPs</dd>
-<dt>scw_dashboard_placement_groups_count{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_placement_groups_count{zone}</dt>
 <dd>Count of placement groups</dd>
-<dt>scw_dashboard_private_nics_count{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_private_nics_count{zone}</dt>
 <dd>Count of private nics</dd>
-<dt>scw_dashboard_running_servers{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_running_servers{zone}</dt>
 <dd>Count of running servers</dd>
-<dt>scw_dashboard_security_groups_count{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_security_groups_count{zone}</dt>
 <dd>Count of security groups</dd>
-<dt>scw_dashboard_server_types_count{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_server_types_count{zone, type}</dt>
 <dd>Count of servers by type</dd>
-<dt>scw_dashboard_servers_count{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_servers_count{zone}</dt>
 <dd>Count of owned servers</dd>
-<dt>scw_dashboard_snapshots_count{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_snapshots_count{zone}</dt>
 <dd>Count of used snapshots</dd>
-<dt>scw_dashboard_unused_ips_count{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_unused_ips_count{zone}</dt>
 <dd>Count of unused IPs</dd>
-<dt>scw_dashboard_volumes_bssd_count{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_volumes_bssd_count{zone}</dt>
 <dd>Count of unused IPs</dd>
-<dt>scw_dashboard_volumes_bssd_total_size{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_volumes_bssd_total_size{zone}</dt>
 <dd>Count of unused IPs</dd>
-<dt>scw_dashboard_volumes_count{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_volumes_count{zone}</dt>
 <dd>Count of used volumes</dd>
-<dt>scw_dashboard_volumes_lssd_count{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_volumes_lssd_count{zone}</dt>
 <dd>Count of unused IPs</dd>
-<dt>scw_dashboard_volumes_lssd_total_size{&lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_dashboard_volumes_lssd_total_size{zone}</dt>
 <dd>Count of unused IPs</dd>
 <dt>scw_request_duration_seconds{collector}</dt>
 <dd>Histogram of latencies for requests to the api per collector</dd>
 <dt>scw_request_failures_total{collector}</dt>
 <dd>Total number of failed requests to the api per collector</dd>
-<dt>scw_security_group_created_timestamp{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_security_group_created_timestamp{id, name, zone, org, project}</dt>
 <dd>Timestamp when the security group have been created</dd>
-<dt>scw_security_group_defined{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_security_group_defined{id, name, zone, org, project}</dt>
 <dd>Constant value of 1 that this security group is defined</dd>
-<dt>scw_security_group_enable_default{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_security_group_enable_default{id, name, zone, org, project}</dt>
 <dd>1 if the security group is enabled by default, 0 otherwise</dd>
-<dt>scw_security_group_inbound_default_policy{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_security_group_inbound_default_policy{id, name, zone, org, project}</dt>
 <dd>1 if the security group inbound default policy is accept, 0 otherwise</dd>
-<dt>scw_security_group_modified_timestamp{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_security_group_modified_timestamp{id, name, zone, org, project}</dt>
 <dd>Timestamp when the security group have been modified</dd>
-<dt>scw_security_group_outbound_default_policy{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_security_group_outbound_default_policy{id, name, zone, org, project}</dt>
 <dd>1 if the security group outbound default policy is accept, 0 otherwise</dd>
-<dt>scw_security_group_project_default{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_security_group_project_default{id, name, zone, org, project}</dt>
 <dd>1 if the security group is an project default, 0 otherwise</dd>
-<dt>scw_security_group_servers_count{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_security_group_servers_count{id, name, zone, org, project}</dt>
 <dd>Number of servers attached to the security group</dd>
-<dt>scw_security_group_stateful{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_security_group_stateful{id, name, zone, org, project}</dt>
 <dd>1 if the security group is stateful by default, 0 otherwise</dd>
-<dt>scw_server_created_timestamp{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_server_created_timestamp{id, name, zone, org, project, type, private_ip, public_ip, arch}</dt>
 <dd>Timestamp when the server have been created</dd>
-<dt>scw_server_modified_timestamp{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_server_modified_timestamp{id, name, zone, org, project, type, private_ip, public_ip, arch}</dt>
 <dd>Timestamp when the server have been modified</dd>
-<dt>scw_server_private_nic_count{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_server_private_nic_count{id, name, zone, org, project, type, private_ip, public_ip, arch}</dt>
 <dd>Number of private nics attached</dd>
-<dt>scw_server_state{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_server_state{id, name, zone, org, project, type, private_ip, public_ip, arch}</dt>
 <dd>If 1 the server is running, depending on the state otherwise</dd>
-<dt>scw_server_volume_count{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_server_volume_count{id, name, zone, org, project, type, private_ip, public_ip, arch}</dt>
 <dd>Number of volumes attached</dd>
-<dt>scw_snapshot_available{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_snapshot_available{id, name, zone, org, project}</dt>
 <dd>Constant value of 1 that this snapshot is available</dd>
-<dt>scw_snapshot_created_timestamp{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_snapshot_created_timestamp{id, name, zone, org, project}</dt>
 <dd>Timestamp when the snapshot have been created</dd>
-<dt>scw_snapshot_modified_timestamp{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_snapshot_modified_timestamp{id, name, zone, org, project}</dt>
 <dd>Timestamp when the snapshot have been modified</dd>
-<dt>scw_snapshot_size_bytes{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_snapshot_size_bytes{id, name, zone, org, project}</dt>
 <dd>Size of the snapshot in bytes</dd>
-<dt>scw_snapshot_state{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_snapshot_state{id, name, zone, org, project}</dt>
 <dd>State of the snapshot</dd>
-<dt>scw_snapshot_type{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_snapshot_type{id, name, zone, org, project}</dt>
 <dd>Type of the snapshot</dd>
-<dt>scw_volume_available{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_volume_available{id, name, zone, org, project}</dt>
 <dd>Constant value of 1 that this volume is available</dd>
-<dt>scw_volume_created_timestamp{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_volume_created_timestamp{id, name, zone, org, project}</dt>
 <dd>Timestamp when the volume have been created</dd>
-<dt>scw_volume_modified_timestamp{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_volume_modified_timestamp{id, name, zone, org, project}</dt>
 <dd>Timestamp when the volume have been modified</dd>
-<dt>scw_volume_size_bytes{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_volume_size_bytes{id, name, zone, org, project}</dt>
 <dd>Size of the volume in bytes</dd>
-<dt>scw_volume_state{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_volume_state{id, name, zone, org, project}</dt>
 <dd>State of the snapshot</dd>
-<dt>scw_volume_type{&lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;, &lt;prometheus.ConstrainedLabel Value&gt;}</dt>
+<dt>scw_volume_type{id, name, zone, org, project}</dt>
 <dd>Type of the snapshot</dd>
 </dl>
 
@@ -691,7 +716,7 @@ installation of <a href="https://helm.sh">Helm</a> you just need to execute the 
 </span></span></span><span class="line"><span class="cl"><span class="go">helm install scw-exporter promhippie/scw-exporter
 </span></span></span></code></pre></div>
 <p>You can also watch that available values and generally the details of the chart
-provided by us within our <a href="https://github.com/promhippie/charts/tree/master/charts/scw-exporter">chart</a> repository.</p>
+provided by us within our <a href="https://github.com/promhippie/charts/tree/master/stable/scw-exporter">chart</a> repository or on <a href="https://artifacthub.io/packages/helm/promhippie/scw-exporter">Artifacthub</a>.</p>
 <p>After applying this manifest the exporter should be directly visible within your
 Prometheus instance depending on your installation if you enabled the
 annotations or the service monitor.</p>
