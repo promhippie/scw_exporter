@@ -99,6 +99,27 @@ func RootFlags(cfg *config.Config) []cli.Flag {
 			EnvVars:     []string{"SCW_EXPORTER_WEB_PATH"},
 			Destination: &cfg.Server.Path,
 		},
+		&cli.BoolFlag{
+			Name:        "web.debug",
+			Value:       false,
+			Usage:       "Enable pprof debugging for server",
+			EnvVars:     []string{"SCW_EXPORTER_WEB_PPROF"},
+			Destination: &cfg.Server.Pprof,
+		},
+		&cli.DurationFlag{
+			Name:        "web.timeout",
+			Value:       10 * time.Second,
+			Usage:       "Server metrics endpoint timeout",
+			EnvVars:     []string{"SCW_EXPORTER_WEB_TIMEOUT"},
+			Destination: &cfg.Server.Timeout,
+		},
+		&cli.StringFlag{
+			Name:        "web.config",
+			Value:       "",
+			Usage:       "Path to web-config file",
+			EnvVars:     []string{"SCW_EXPORTER_WEB_CONFIG"},
+			Destination: &cfg.Server.Web,
+		},
 		&cli.DurationFlag{
 			Name:        "request.timeout",
 			Value:       5 * time.Second,
