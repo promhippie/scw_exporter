@@ -14,6 +14,7 @@ import (
 	"github.com/go-kit/log/level"
 	"github.com/oklog/run"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/prometheus/exporter-toolkit/web"
 	"github.com/promhippie/scw_exporter/pkg/config"
 	"github.com/promhippie/scw_exporter/pkg/exporter"
 	"github.com/promhippie/scw_exporter/pkg/middleware"
@@ -31,10 +32,32 @@ func Server(cfg *config.Config, logger log.Logger) error {
 		"go", version.Go,
 	)
 
+	accessKey, err := config.Value(cfg.Target.AccessKey)
+
+	if err != nil {
+		level.Error(logger).Log(
+			"msg", "Failed to load access key from file",
+			"err", err,
+		)
+
+		return err
+	}
+
+	secretKey, err := config.Value(cfg.Target.SecretKey)
+
+	if err != nil {
+		level.Error(logger).Log(
+			"msg", "Failed to load secret key from file",
+			"err", err,
+		)
+
+		return err
+	}
+
 	opts := []scw.ClientOption{
 		scw.WithAuth(
-			cfg.Target.AccessKey,
-			cfg.Target.SecretKey,
+			accessKey,
+			secretKey,
 		),
 		scw.WithDefaultPageSize(
 			100,
@@ -126,7 +149,15 @@ func Server(cfg *config.Config, logger log.Logger) error {
 				"addr", cfg.Server.Addr,
 			)
 
-			return server.ListenAndServe()
+			return web.ListenAndServe(
+				server,
+				&web.FlagConfig{
+					WebListenAddresses: sliceP([]string{cfg.Server.Addr}),
+					WebSystemdSocket:   boolP(false),
+					WebConfigFile:      stringP(cfg.Server.Web),
+				},
+				logger,
+			)
 		}, func(reason error) {
 			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 			defer cancel()
@@ -170,6 +201,10 @@ func handler(cfg *config.Config, logger log.Logger, client *scw.Client) *chi.Mux
 	mux.Use(middleware.RealIP)
 	mux.Use(middleware.Timeout)
 	mux.Use(middleware.Cache)
+
+	if cfg.Server.Pprof {
+		mux.Mount("/debug", middleware.Profiler())
+	}
 
 	if cfg.Collector.Dashboard {
 		level.Debug(logger).Log(

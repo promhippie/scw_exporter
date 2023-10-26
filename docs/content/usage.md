@@ -111,6 +111,22 @@ support for it, for details about the config format look at the
       - SCW_EXPORTER_LOG_PRETTY=true
 {{< / highlight >}}
 
+If you want to provide the required secrets from a file it's also possible. For
+this use case you can write the secret to a file on any path and reference it
+with the following format:
+
+{{< highlight diff >}}
+  scw_exporter:
+    image: promhippie/scw-exporter:latest
+    restart: always
+    environment:
+-     - SCW_EXPORTER_ACESS_KEY=your-access-key
+-     - SCW_EXPORTER_SECRET_KEY=your-secret-key
++     - SCW_EXPORTER_ACESS_KEY=file://path/to/secret/file/with/access-key
++     - SCW_EXPORTER_SECRET_KEY=file://path/to/secret/file/with/secret-key
+      - SCW_EXPORTER_LOG_PRETTY=true
+{{< / highlight >}}
+
 Finally the exporter should be configured fine, let's start this stack with
 [docker-compose][compose], you just need to execute `docker-compose up` within
 the directory where you have stored the `prometheus.yml` and
