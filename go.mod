@@ -13,7 +13,7 @@ require (
 	github.com/prometheus/exporter-toolkit v0.11.0
 	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.22
 	github.com/stretchr/testify v1.8.4
-	github.com/urfave/cli/v2 v2.27.0
+	github.com/urfave/cli/v2 v2.27.1
 )
 
 require (
