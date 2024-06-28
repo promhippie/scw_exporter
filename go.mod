@@ -2,7 +2,7 @@ module github.com/promhippie/scw_exporter
 
 go 1.21
 
-toolchain go1.22.3
+toolchain go1.22.4
 
 require (
 	github.com/go-chi/chi/v5 v5.1.0
@@ -11,7 +11,7 @@ require (
 	github.com/oklog/run v1.1.0
 	github.com/prometheus/client_golang v1.19.1
 	github.com/prometheus/exporter-toolkit v0.11.0
-	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.26
+	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.28
 	github.com/stretchr/testify v1.9.0
 	github.com/urfave/cli/v2 v2.27.2
 )
