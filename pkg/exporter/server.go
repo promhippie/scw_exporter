@@ -1,10 +1,9 @@
 package exporter
 
 import (
+	"log/slog"
 	"time"
 
-	"github.com/go-kit/log"
-	"github.com/go-kit/log/level"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/promhippie/scw_exporter/pkg/config"
 
@@ -16,7 +15,7 @@ import (
 type ServerCollector struct {
 	client   *scw.Client
 	instance *instance.API
-	logger   log.Logger
+	logger   *slog.Logger
 	failures *prometheus.CounterVec
 	duration *prometheus.HistogramVec
 	config   config.Target
@@ -31,7 +30,7 @@ type ServerCollector struct {
 }
 
 // NewServerCollector returns a new ServerCollector.
-func NewServerCollector(logger log.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *ServerCollector {
+func NewServerCollector(logger *slog.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *ServerCollector {
 	if failures != nil {
 		failures.WithLabelValues("server").Add(0)
 	}
@@ -40,7 +39,7 @@ func NewServerCollector(logger log.Logger, client *scw.Client, failures *prometh
 	collector := &ServerCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
-		logger:   log.With(logger, "collector", "server"),
+		logger:   logger.With("collector", "server"),
 		failures: failures,
 		duration: duration,
 		config:   cfg,
@@ -120,8 +119,7 @@ func (c *ServerCollector) Collect(ch chan<- prometheus.Metric) {
 		c.duration.WithLabelValues("server").Observe(time.Since(now).Seconds())
 
 		if err != nil {
-			level.Error(c.logger).Log(
-				"msg", "Failed to fetch servers",
+			c.logger.Error("Failed to fetch servers",
 				"zone", zone,
 				"err", err,
 			)
@@ -130,8 +128,7 @@ func (c *ServerCollector) Collect(ch chan<- prometheus.Metric) {
 			return
 		}
 
-		level.Debug(c.logger).Log(
-			"msg", "Fetched servers",
+		c.logger.Debug("Fetched servers",
 			"zone", zone,
 			"count", resp.TotalCount,
 		)

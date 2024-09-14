@@ -1,10 +1,9 @@
 package exporter
 
 import (
+	"log/slog"
 	"time"
 
-	"github.com/go-kit/log"
-	"github.com/go-kit/log/level"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/promhippie/scw_exporter/pkg/config"
 
@@ -16,7 +15,7 @@ import (
 type VolumeCollector struct {
 	client   *scw.Client
 	instance *instance.API
-	logger   log.Logger
+	logger   *slog.Logger
 	failures *prometheus.CounterVec
 	duration *prometheus.HistogramVec
 	config   config.Target
@@ -32,7 +31,7 @@ type VolumeCollector struct {
 }
 
 // NewVolumeCollector returns a new VolumeCollector.
-func NewVolumeCollector(logger log.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *VolumeCollector {
+func NewVolumeCollector(logger *slog.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *VolumeCollector {
 	if failures != nil {
 		failures.WithLabelValues("volume").Add(0)
 	}
@@ -41,7 +40,7 @@ func NewVolumeCollector(logger log.Logger, client *scw.Client, failures *prometh
 	collector := &VolumeCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
-		logger:   log.With(logger, "collector", "volume"),
+		logger:   logger.With("collector", "volume"),
 		failures: failures,
 		duration: duration,
 		config:   cfg,
@@ -129,8 +128,7 @@ func (c *VolumeCollector) Collect(ch chan<- prometheus.Metric) {
 		c.duration.WithLabelValues("volume").Observe(time.Since(now).Seconds())
 
 		if err != nil {
-			level.Error(c.logger).Log(
-				"msg", "Failed to fetch volumes",
+			c.logger.Error("Failed to fetch volumes",
 				"zone", zone,
 				"err", err,
 			)
@@ -139,8 +137,7 @@ func (c *VolumeCollector) Collect(ch chan<- prometheus.Metric) {
 			return
 		}
 
-		level.Debug(c.logger).Log(
-			"msg", "Fetched volumes",
+		c.logger.Debug("Fetched volumes",
 			"zone", zone,
 			"count", resp.TotalCount,
 		)

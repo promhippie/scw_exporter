@@ -5,7 +5,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/go-kit/log/level"
 	"github.com/promhippie/scw_exporter/pkg/action"
 	"github.com/promhippie/scw_exporter/pkg/config"
 	"github.com/promhippie/scw_exporter/pkg/version"
@@ -34,18 +33,12 @@ func Run() error {
 			logger := setupLogger(cfg)
 
 			if cfg.Target.AccessKey == "" {
-				level.Error(logger).Log(
-					"msg", "Missing required scw.access-key",
-				)
-
+				logger.Error("Missing required scw.access-key")
 				return fmt.Errorf("missing required scw.access-key")
 			}
 
 			if cfg.Target.SecretKey == "" {
-				level.Error(logger).Log(
-					"msg", "Missing required scw.secret-key",
-				)
-
+				logger.Error("Missing required scw.secret-key")
 				return fmt.Errorf("missing required scw.secret-key")
 			}
 

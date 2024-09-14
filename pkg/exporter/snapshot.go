@@ -1,10 +1,9 @@
 package exporter
 
 import (
+	"log/slog"
 	"time"
 
-	"github.com/go-kit/log"
-	"github.com/go-kit/log/level"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/promhippie/scw_exporter/pkg/config"
 
@@ -16,7 +15,7 @@ import (
 type SnapshotCollector struct {
 	client   *scw.Client
 	instance *instance.API
-	logger   log.Logger
+	logger   *slog.Logger
 	failures *prometheus.CounterVec
 	duration *prometheus.HistogramVec
 	config   config.Target
@@ -32,7 +31,7 @@ type SnapshotCollector struct {
 }
 
 // NewSnapshotCollector returns a new SnapshotCollector.
-func NewSnapshotCollector(logger log.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *SnapshotCollector {
+func NewSnapshotCollector(logger *slog.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *SnapshotCollector {
 	if failures != nil {
 		failures.WithLabelValues("snapshot").Add(0)
 	}
@@ -41,7 +40,7 @@ func NewSnapshotCollector(logger log.Logger, client *scw.Client, failures *prome
 	collector := &SnapshotCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
-		logger:   log.With(logger, "collector", "snapshot"),
+		logger:   logger.With("collector", "snapshot"),
 		failures: failures,
 		duration: duration,
 		config:   cfg,
@@ -129,8 +128,7 @@ func (c *SnapshotCollector) Collect(ch chan<- prometheus.Metric) {
 		c.duration.WithLabelValues("snapshot").Observe(time.Since(now).Seconds())
 
 		if err != nil {
-			level.Error(c.logger).Log(
-				"msg", "Failed to fetch snapshots",
+			c.logger.Error("Failed to fetch snapshots",
 				"zone", zone,
 				"err", err,
 			)
@@ -139,8 +137,7 @@ func (c *SnapshotCollector) Collect(ch chan<- prometheus.Metric) {
 			return
 		}
 
-		level.Debug(c.logger).Log(
-			"msg", "Fetched snapshots",
+		c.logger.Debug("Fetched snapshots",
 			"zone", zone,
 			"count", resp.TotalCount,
 		)

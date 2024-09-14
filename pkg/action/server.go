@@ -4,14 +4,13 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"log/slog"
 	"net/http"
 	"os"
 	"os/signal"
 	"time"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/go-kit/log"
-	"github.com/go-kit/log/level"
 	"github.com/oklog/run"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/exporter-toolkit/web"
@@ -23,9 +22,8 @@ import (
 )
 
 // Server handles the server sub-command.
-func Server(cfg *config.Config, logger log.Logger) error {
-	level.Info(logger).Log(
-		"msg", "Launching Scaleway Exporter",
+func Server(cfg *config.Config, logger *slog.Logger) error {
+	logger.Info("Launching Scaleway Exporter",
 		"version", version.String,
 		"revision", version.Revision,
 		"date", version.Date,
@@ -35,8 +33,7 @@ func Server(cfg *config.Config, logger log.Logger) error {
 	accessKey, err := config.Value(cfg.Target.AccessKey)
 
 	if err != nil {
-		level.Error(logger).Log(
-			"msg", "Failed to load access key from file",
+		logger.Error("Failed to load access key from file",
 			"err", err,
 		)
 
@@ -46,8 +43,7 @@ func Server(cfg *config.Config, logger log.Logger) error {
 	secretKey, err := config.Value(cfg.Target.SecretKey)
 
 	if err != nil {
-		level.Error(logger).Log(
-			"msg", "Failed to load secret key from file",
+		logger.Error("Failed to load secret key from file",
 			"err", err,
 		)
 
@@ -88,8 +84,7 @@ func Server(cfg *config.Config, logger log.Logger) error {
 		)
 
 		if err != nil {
-			level.Error(logger).Log(
-				"msg", "Failed to parse region",
+			logger.Error("Failed to parse region",
 				"err", err,
 			)
 
@@ -107,8 +102,7 @@ func Server(cfg *config.Config, logger log.Logger) error {
 		)
 
 		if err != nil {
-			level.Error(logger).Log(
-				"msg", "Failed to parse zone",
+			logger.Error("Failed to parse zone",
 				"err", err,
 			)
 
@@ -125,8 +119,7 @@ func Server(cfg *config.Config, logger log.Logger) error {
 	)
 
 	if err != nil {
-		level.Error(logger).Log(
-			"msg", "Failed to initialize Scaleway client",
+		logger.Error("Failed to initialize Scaleway client",
 			"err", err,
 		)
 
@@ -144,9 +137,8 @@ func Server(cfg *config.Config, logger log.Logger) error {
 		}
 
 		gr.Add(func() error {
-			level.Info(logger).Log(
-				"msg", "Starting metrics server",
-				"addr", cfg.Server.Addr,
+			logger.Info("Starting metrics server",
+				"address", cfg.Server.Addr,
 			)
 
 			return web.ListenAndServe(
@@ -163,16 +155,14 @@ func Server(cfg *config.Config, logger log.Logger) error {
 			defer cancel()
 
 			if err := server.Shutdown(ctx); err != nil {
-				level.Error(logger).Log(
-					"msg", "Failed to shutdown metrics gracefully",
+				logger.Error("Failed to shutdown metrics gracefully",
 					"err", err,
 				)
 
 				return
 			}
 
-			level.Info(logger).Log(
-				"msg", "Metrics shutdown gracefully",
+			logger.Info("Metrics shutdown gracefully",
 				"reason", reason,
 			)
 		})
@@ -195,7 +185,7 @@ func Server(cfg *config.Config, logger log.Logger) error {
 	return gr.Run()
 }
 
-func handler(cfg *config.Config, logger log.Logger, client *scw.Client) *chi.Mux {
+func handler(cfg *config.Config, logger *slog.Logger, client *scw.Client) *chi.Mux {
 	mux := chi.NewRouter()
 	mux.Use(middleware.Recoverer(logger))
 	mux.Use(middleware.RealIP)
@@ -207,9 +197,7 @@ func handler(cfg *config.Config, logger log.Logger, client *scw.Client) *chi.Mux
 	}
 
 	if cfg.Collector.Dashboard {
-		level.Debug(logger).Log(
-			"msg", "Dashboard collector registered",
-		)
+		logger.Debug("Dashboard collector registered")
 
 		registry.MustRegister(exporter.NewDashboardCollector(
 			logger,
@@ -221,9 +209,7 @@ func handler(cfg *config.Config, logger log.Logger, client *scw.Client) *chi.Mux
 	}
 
 	if cfg.Collector.SecurityGroups {
-		level.Debug(logger).Log(
-			"msg", "Security group collector registered",
-		)
+		logger.Debug("Security group collector registered")
 
 		registry.MustRegister(exporter.NewSecurityGroupCollector(
 			logger,
@@ -235,9 +221,7 @@ func handler(cfg *config.Config, logger log.Logger, client *scw.Client) *chi.Mux
 	}
 
 	if cfg.Collector.Servers {
-		level.Debug(logger).Log(
-			"msg", "Server collector registered",
-		)
+		logger.Debug("Server collector registered")
 
 		registry.MustRegister(exporter.NewServerCollector(
 			logger,
@@ -249,9 +233,7 @@ func handler(cfg *config.Config, logger log.Logger, client *scw.Client) *chi.Mux
 	}
 
 	if cfg.Collector.Snapshots {
-		level.Debug(logger).Log(
-			"msg", "Snaptshot collector registered",
-		)
+		logger.Debug("Snaptshot collector registered")
 
 		registry.MustRegister(exporter.NewSnapshotCollector(
 			logger,
@@ -263,9 +245,7 @@ func handler(cfg *config.Config, logger log.Logger, client *scw.Client) *chi.Mux
 	}
 
 	if cfg.Collector.Volumes {
-		level.Debug(logger).Log(
-			"msg", "Volume collector registered",
-		)
+		logger.Debug("Volume collector registered")
 
 		registry.MustRegister(exporter.NewVolumeCollector(
 			logger,
