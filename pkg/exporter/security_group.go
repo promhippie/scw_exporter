@@ -1,10 +1,9 @@
 package exporter
 
 import (
+	"log/slog"
 	"time"
 
-	"github.com/go-kit/log"
-	"github.com/go-kit/log/level"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/promhippie/scw_exporter/pkg/config"
 
@@ -16,7 +15,7 @@ import (
 type SecurityGroupCollector struct {
 	client   *scw.Client
 	instance *instance.API
-	logger   log.Logger
+	logger   *slog.Logger
 	failures *prometheus.CounterVec
 	duration *prometheus.HistogramVec
 	config   config.Target
@@ -35,7 +34,7 @@ type SecurityGroupCollector struct {
 }
 
 // NewSecurityGroupCollector returns a new SecurityGroupCollector.
-func NewSecurityGroupCollector(logger log.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *SecurityGroupCollector {
+func NewSecurityGroupCollector(logger *slog.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *SecurityGroupCollector {
 	if failures != nil {
 		failures.WithLabelValues("security_group").Add(0)
 	}
@@ -44,7 +43,7 @@ func NewSecurityGroupCollector(logger log.Logger, client *scw.Client, failures *
 	collector := &SecurityGroupCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
-		logger:   log.With(logger, "collector", "security_group"),
+		logger:   logger.With("collector", "security_group"),
 		failures: failures,
 		duration: duration,
 		config:   cfg,
@@ -156,8 +155,7 @@ func (c *SecurityGroupCollector) Collect(ch chan<- prometheus.Metric) {
 		c.duration.WithLabelValues("security_group").Observe(time.Since(now).Seconds())
 
 		if err != nil {
-			level.Error(c.logger).Log(
-				"msg", "Failed to fetch security groups",
+			c.logger.Error("Failed to fetch security groups",
 				"zone", zone,
 				"err", err,
 			)
@@ -166,8 +164,7 @@ func (c *SecurityGroupCollector) Collect(ch chan<- prometheus.Metric) {
 			return
 		}
 
-		level.Debug(c.logger).Log(
-			"msg", "Fetched security groups",
+		c.logger.Debug("Fetched security groups",
 			"zone", zone,
 			"count", resp.TotalCount,
 		)

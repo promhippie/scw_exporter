@@ -1,10 +1,9 @@
 package exporter
 
 import (
+	"log/slog"
 	"time"
 
-	"github.com/go-kit/log"
-	"github.com/go-kit/log/level"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/promhippie/scw_exporter/pkg/config"
 	"github.com/scaleway/scaleway-sdk-go/api/instance/v1"
@@ -15,7 +14,7 @@ import (
 type DashboardCollector struct {
 	client   *scw.Client
 	instance *instance.API
-	logger   log.Logger
+	logger   *slog.Logger
 	failures *prometheus.CounterVec
 	duration *prometheus.HistogramVec
 	config   config.Target
@@ -40,7 +39,7 @@ type DashboardCollector struct {
 }
 
 // NewDashboardCollector returns a new DashboardCollector.
-func NewDashboardCollector(logger log.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *DashboardCollector {
+func NewDashboardCollector(logger *slog.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *DashboardCollector {
 	if failures != nil {
 		failures.WithLabelValues("dashboard").Add(0)
 	}
@@ -49,7 +48,7 @@ func NewDashboardCollector(logger log.Logger, client *scw.Client, failures *prom
 	collector := &DashboardCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
-		logger:   log.With(logger, "collector", "dashboard"),
+		logger:   logger.With("collector", "dashboard"),
 		failures: failures,
 		duration: duration,
 		config:   cfg,
@@ -209,8 +208,7 @@ func (c *DashboardCollector) Collect(ch chan<- prometheus.Metric) {
 		c.duration.WithLabelValues("dashboard").Observe(time.Since(now).Seconds())
 
 		if err != nil {
-			level.Error(c.logger).Log(
-				"msg", "Failed to fetch dashboard",
+			c.logger.Error("Failed to fetch dashboard",
 				"zone", zone,
 				"err", err,
 			)
