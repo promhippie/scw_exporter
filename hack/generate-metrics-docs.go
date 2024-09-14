@@ -5,6 +5,7 @@ package main
 
 import (
 	"fmt"
+	"log/slog"
 	"os"
 	"reflect"
 	"sort"
@@ -26,27 +27,27 @@ func main() {
 
 	collectors = append(
 		collectors,
-		exporter.NewDashboardCollector(nil, nil, nil, nil, config.Load().Target).Metrics()...,
+		exporter.NewDashboardCollector(slog.Default(), nil, nil, nil, config.Load().Target).Metrics()...,
 	)
 
 	collectors = append(
 		collectors,
-		exporter.NewSecurityGroupCollector(nil, nil, nil, nil, config.Load().Target).Metrics()...,
+		exporter.NewSecurityGroupCollector(slog.Default(), nil, nil, nil, config.Load().Target).Metrics()...,
 	)
 
 	collectors = append(
 		collectors,
-		exporter.NewServerCollector(nil, nil, nil, nil, config.Load().Target).Metrics()...,
+		exporter.NewServerCollector(slog.Default(), nil, nil, nil, config.Load().Target).Metrics()...,
 	)
 
 	collectors = append(
 		collectors,
-		exporter.NewSnapshotCollector(nil, nil, nil, nil, config.Load().Target).Metrics()...,
+		exporter.NewSnapshotCollector(slog.Default(), nil, nil, nil, config.Load().Target).Metrics()...,
 	)
 
 	collectors = append(
 		collectors,
-		exporter.NewVolumeCollector(nil, nil, nil, nil, config.Load().Target).Metrics()...,
+		exporter.NewVolumeCollector(slog.Default(), nil, nil, nil, config.Load().Target).Metrics()...,
 	)
 
 	metrics := make([]metric, 0)
