@@ -12,6 +12,7 @@ import (
 	"github.com/scaleway/scaleway-sdk-go/scw"
 )
 
+// ConsumptionCollector collects metrics about resources consumption.
 type ConsumptionCollector struct {
 	client      *scw.Client
 	consumption *billing.API
@@ -26,6 +27,7 @@ type ConsumptionCollector struct {
 	Quantity *prometheus.Desc
 }
 
+// NewConsumptionCollector returns a new ServerCollector.
 func NewConsumptionCollector(logger *slog.Logger, client *scw.Client, failures *prometheus.CounterVec, duration *prometheus.HistogramVec, cfg config.Target) *ConsumptionCollector {
 	if failures != nil {
 		failures.WithLabelValues("consumption").Add(0)
@@ -66,6 +68,7 @@ func NewConsumptionCollector(logger *slog.Logger, client *scw.Client, failures *
 	return collector
 }
 
+// Metrics simply returns the list metric descriptors for generating a documentation.
 func (c *ConsumptionCollector) Metrics() []*prometheus.Desc {
 	return []*prometheus.Desc{
 		c.Value,
@@ -73,11 +76,13 @@ func (c *ConsumptionCollector) Metrics() []*prometheus.Desc {
 	}
 }
 
+// Describe sends the super-set of all possible descriptors of metrics collected by this Collector.
 func (c *ConsumptionCollector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- c.Value
 	ch <- c.Quantity
 }
 
+// Collect is called by the Prometheus registry when collecting metrics.
 func (c *ConsumptionCollector) Collect(ch chan<- prometheus.Metric) {
 	now := time.Now()
 
