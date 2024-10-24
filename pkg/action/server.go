@@ -196,6 +196,18 @@ func handler(cfg *config.Config, logger *slog.Logger, client *scw.Client) *chi.M
 		mux.Mount("/debug", middleware.Profiler())
 	}
 
+	if cfg.Collector.Consumption {
+		logger.Debug("Consumption collector registered")
+
+		registry.MustRegister(exporter.NewConsumptionCollector(
+			logger,
+			client,
+			requestFailures,
+			requestDuration,
+			cfg.Target,
+		))
+	}
+
 	if cfg.Collector.Dashboard {
 		logger.Debug("Dashboard collector registered")
 
