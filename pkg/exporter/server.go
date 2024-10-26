@@ -145,8 +145,9 @@ func (c *ServerCollector) Collect(ch chan<- prometheus.Metric) {
 				privateIP = *server.PrivateIP
 			}
 
-			if server.PublicIP != nil {
-				publicIP = server.PublicIP.Address.String()
+			for _, ip := range server.PublicIPs {
+				publicIP = ip.Address.String()
+				break
 			}
 
 			labels := []string{
