@@ -37,6 +37,7 @@ type Target struct {
 // Collector defines the collector specific configuration.
 type Collector struct {
 	Dashboard      bool
+	Consumption    bool
 	SecurityGroups bool
 	Servers        bool
 	Baremetal      bool

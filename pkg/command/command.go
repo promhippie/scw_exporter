@@ -170,6 +170,13 @@ func RootFlags(cfg *config.Config) []cli.Flag {
 			Destination: &cfg.Collector.Dashboard,
 		},
 		&cli.BoolFlag{
+			Name:        "collector.consumption",
+			Value:       true,
+			Usage:       "Enable collector for billing consumption",
+			EnvVars:     []string{"SCW_EXPORTER_COLLECTOR_CONSUMPTION"},
+			Destination: &cfg.Collector.Consumption,
+		},
+		&cli.BoolFlag{
 			Name:        "collector.security-groups",
 			Value:       true,
 			Usage:       "Enable collector for security groups",
