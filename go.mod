@@ -3,12 +3,12 @@ module github.com/promhippie/scw_exporter
 go 1.23.0
 
 require (
-	github.com/go-chi/chi/v5 v5.2.0
+	github.com/go-chi/chi/v5 v5.2.1
 	github.com/joho/godotenv v1.5.1
 	github.com/oklog/run v1.1.0
-	github.com/prometheus/client_golang v1.21.0
+	github.com/prometheus/client_golang v1.21.1
 	github.com/prometheus/exporter-toolkit v0.14.0
-	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.30
+	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.33
 	github.com/stretchr/testify v1.10.0
 	github.com/urfave/cli/v3 v3.1.1
 )
