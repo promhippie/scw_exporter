@@ -171,8 +171,15 @@ func RootFlags(cfg *config.Config) []cli.Flag {
 			Name:        "collector.consumption",
 			Value:       true,
 			Usage:       "Enable collector for billing consumption",
-			EnvVars:     []string{"SCW_EXPORTER_COLLECTOR_CONSUMPTION"},
+			Sources:     cli.EnvVars("SCW_EXPORTER_COLLECTOR_CONSUMPTION"),
 			Destination: &cfg.Collector.Consumption,
+		},
+		&cli.StringSliceFlag{
+			Name:        "collector.consumption.labels",
+			Value:       config.ConsumptionLabels(),
+			Usage:       "List of labels used for consumptions",
+			Sources:     cli.EnvVars("SCW_EXPORTER_COLLECTOR_CONSUMPTION_LABELS"),
+			Destination: &cfg.Target.Consumption.Labels,
 		},
 		&cli.BoolFlag{
 			Name:        "collector.security-groups",

@@ -33,7 +33,7 @@ func NewConsumptionCollector(logger *slog.Logger, client *scw.Client, failures *
 		failures.WithLabelValues("consumption").Add(0)
 	}
 
-	labels := []string{"category_name", "product_name", "project_id", "resource_name", "sku", "unit"}
+	labels := cfg.Consumption.Labels
 	collector := &ConsumptionCollector{
 		client:      client,
 		consumption: billing.NewAPI(client),
@@ -85,38 +85,51 @@ func (c *ConsumptionCollector) Describe(ch chan<- *prometheus.Desc) {
 // Collect is called by the Prometheus registry when collecting metrics.
 func (c *ConsumptionCollector) Collect(ch chan<- prometheus.Metric) {
 	now := time.Now()
-
-	resp, err := c.consumption.ListConsumptions(
-		&billing.ListConsumptionsRequest{},
-		scw.WithAllPages(),
-	)
+	resp, err := c.consumption.ListConsumptions(&billing.ListConsumptionsRequest{
+		OrganizationID: c.org,
+		ProjectID:      c.project,
+	}, scw.WithAllPages())
 	c.duration.WithLabelValues("consumption").Observe(time.Since(now).Seconds())
 
 	if err != nil {
-		c.logger.Error("failed to fetch consumptions",
-			"organization", c.org,
+		c.logger.Error("Failed to fetch consumptions",
 			"err", err,
 		)
+
 		c.failures.WithLabelValues("consumption").Inc()
 		return
 	}
 
-	for _, consumption := range resp.Consumptions {
+	c.logger.Debug("Fetched consumptions",
+		"count", resp.TotalCount,
+	)
 
+	for _, consumption := range resp.Consumptions {
 		var (
 			value    float64
 			quantity float64
 		)
 
-		quantity, _ = strconv.ParseFloat(consumption.BilledQuantity, 64)
+		quantity, err = strconv.ParseFloat(
+			consumption.BilledQuantity,
+			64,
+		)
 
-		labels := []string{
-			consumption.CategoryName,
-			consumption.ProductName,
-			consumption.ProjectID,
-			consumption.ResourceName,
-			consumption.Sku,
-			consumption.Unit,
+		if err != nil {
+			c.logger.Error("Failed to parse consumptions",
+				"err", err,
+			)
+
+			continue
+		}
+
+		labels := []string{}
+
+		for _, label := range c.config.Consumption.Labels {
+			labels = append(
+				labels,
+				consumptionLabel(consumption, label),
+			)
 		}
 
 		ch <- prometheus.MustNewConstMetric(
@@ -133,4 +146,23 @@ func (c *ConsumptionCollector) Collect(ch chan<- prometheus.Metric) {
 			labels...,
 		)
 	}
+}
+
+func consumptionLabel(consumption *billing.ListConsumptionsResponseConsumption, label string) string {
+	switch label {
+	case "category_name":
+		return consumption.CategoryName
+	case "product_name":
+		return consumption.ProductName
+	case "project_id":
+		return consumption.ProjectID
+	case "resource_name":
+		return consumption.ResourceName
+	case "sku":
+		return consumption.Sku
+	case "unit":
+		return consumption.Unit
+	}
+
+	return ""
 }

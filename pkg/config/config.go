@@ -23,15 +23,21 @@ type Logs struct {
 	Pretty bool
 }
 
+// Consumption defines the config for the consumption collector.
+type Consumption struct {
+	Labels []string
+}
+
 // Target defines the target specific configuration.
 type Target struct {
-	AccessKey string
-	SecretKey string
-	Org       string
-	Project   string
-	Region    string
-	Zone      string
-	Timeout   time.Duration
+	AccessKey   string
+	SecretKey   string
+	Org         string
+	Project     string
+	Region      string
+	Zone        string
+	Timeout     time.Duration
+	Consumption Consumption
 }
 
 // Collector defines the collector specific configuration.
@@ -56,6 +62,18 @@ type Config struct {
 // Load initializes a default configuration struct.
 func Load() *Config {
 	return &Config{}
+}
+
+// ConsumptionLabels defines the default labels used by consumption collector.
+func ConsumptionLabels() []string {
+	return []string{
+		"category_name",
+		"product_name",
+		"project_id",
+		"resource_name",
+		"sku",
+		"unit",
+	}
 }
 
 // Value returns the config value based on a DSN.
