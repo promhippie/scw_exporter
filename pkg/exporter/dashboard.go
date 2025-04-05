@@ -291,18 +291,22 @@ func (c *DashboardCollector) Collect(ch chan<- prometheus.Metric) {
 			labels...,
 		)
 
-		ch <- prometheus.MustNewConstMetric(
-			c.VolumesBSSD,
-			prometheus.GaugeValue,
-			float64(dashboard.VolumesBSSDCount),
-			labels...,
-		)
-		ch <- prometheus.MustNewConstMetric(
-			c.VolumesBSSDSize,
-			prometheus.GaugeValue,
-			float64(dashboard.VolumesBSSDTotalSize),
-			labels...,
-		)
+		if dashboard.VolumesBSSDCount != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.VolumesBSSD,
+				prometheus.GaugeValue,
+				float64(*dashboard.VolumesBSSDCount),
+				labels...,
+			)
+		}
+		if dashboard.VolumesBSSDTotalSize != nil {
+			ch <- prometheus.MustNewConstMetric(
+				c.VolumesBSSDSize,
+				prometheus.GaugeValue,
+				float64(*dashboard.VolumesBSSDTotalSize),
+				labels...,
+			)
+		}
 
 		ch <- prometheus.MustNewConstMetric(
 			c.PrivateNics,
