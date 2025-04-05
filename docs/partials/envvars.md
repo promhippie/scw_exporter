@@ -43,6 +43,12 @@ SCW_EXPORTER_ZONE
 SCW_EXPORTER_COLLECTOR_DASHBOARD
 : Enable collector for dashboard, defaults to `true`
 
+SCW_EXPORTER_COLLECTOR_CONSUMPTION
+: Enable collector for billing consumption, defaults to `true`
+
+SCW_EXPORTER_COLLECTOR_CONSUMPTION_LABELS
+: List of labels used for consumptions, comma-separated list, defaults to `category_name, product_name, project_id, resource_name, sku, unit`
+
 SCW_EXPORTER_COLLECTOR_SECURITY_GROUPS
 : Enable collector for security groups, defaults to `true`
 
