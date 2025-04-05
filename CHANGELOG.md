@@ -5,6 +5,7 @@ The following sections list the changes for unreleased.
 ## Summary
 
  * Chg #104: Switch to official logging library
+ * Enh #114: Add metrics for consumption statistics
 
 ## Details
 
@@ -15,6 +16,13 @@ The following sections list the changes for unreleased.
    should change a little bit.
 
    https://github.com/promhippie/scw_exporter/issues/104
+
+ * Enhancement #114: Add metrics for consumption statistics
+
+   We've added new metrics for the consumption API endpoints to give an overview
+   about consumed and billed resources.
+
+   https://github.com/promhippie/scw_exporter/pull/114
 
 
 # Changelog for 1.1.0
