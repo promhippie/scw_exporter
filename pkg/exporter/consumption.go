@@ -110,6 +110,10 @@ func (c *ConsumptionCollector) Collect(ch chan<- prometheus.Metric) {
 			quantity float64
 		)
 
+		if consumption.Value != nil {
+			value = float64(consumption.Value.Units)
+		}
+
 		quantity, err = strconv.ParseFloat(
 			consumption.BilledQuantity,
 			64,
@@ -162,6 +166,10 @@ func consumptionLabel(consumption *billing.ListConsumptionsResponseConsumption, 
 		return consumption.Sku
 	case "unit":
 		return consumption.Unit
+	case "currency":
+		if consumption.Value != nil {
+			return consumption.Value.CurrencyCode
+		}
 	}
 
 	return ""
