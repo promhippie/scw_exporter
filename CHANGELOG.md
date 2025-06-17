@@ -1,3 +1,23 @@
+# Changelog for 1.2.1
+
+The following sections list the changes for 1.2.1.
+
+## Summary
+
+ * Fix #138: Add missing value for consumption metrics
+
+## Details
+
+ * Bugfix #138: Add missing value for consumption metrics
+
+   Until now the value for the consumption metrics was missing any assignment of a
+   real value as the variable have only been defined with the default zero value.
+   Beside that you are also able to add a currency label to make sure you can
+   calculate correct currencies.
+
+   https://github.com/promhippie/scw_exporter/issues/138
+
+
 # Changelog for 1.2.0
 
 The following sections list the changes for 1.2.0.
