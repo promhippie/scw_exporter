@@ -1,0 +1,12 @@
+[Unit]
+Description=Scaleway Exporter
+After=network.service
+
+[Service]
+User=root
+Group=root
+EnvironmentFile=<path-to-env-config-file>
+ExecStart=/usr/local/bin/scw-exporter
+
+[Install]
+WantedBy=multi-user.target
