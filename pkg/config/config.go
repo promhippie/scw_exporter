@@ -70,6 +70,7 @@ func ConsumptionLabels() []string {
 		"category_name",
 		"product_name",
 		"project_id",
+		"project_name",
 		"resource_name",
 		"sku",
 		"unit",

@@ -197,15 +197,19 @@ func handler(cfg *config.Config, logger *slog.Logger, client *scw.Client) *chi.M
 	}
 
 	if cfg.Collector.Consumption {
-		logger.Debug("Consumption collector registered")
+		if cfg.Target.Project == "" && cfg.Target.Org == "" {
+			logger.Debug("Consumption requires org/project")
+		} else {
+			logger.Debug("Consumption collector registered")
 
-		registry.MustRegister(exporter.NewConsumptionCollector(
-			logger,
-			client,
-			requestFailures,
-			requestDuration,
-			cfg.Target,
-		))
+			registry.MustRegister(exporter.NewConsumptionCollector(
+				logger,
+				client,
+				requestFailures,
+				requestDuration,
+				cfg.Target,
+			))
+		}
 	}
 
 	if cfg.Collector.Dashboard {

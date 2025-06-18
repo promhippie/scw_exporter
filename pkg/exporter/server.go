@@ -35,7 +35,7 @@ func NewServerCollector(logger *slog.Logger, client *scw.Client, failures *prome
 		failures.WithLabelValues("server").Add(0)
 	}
 
-	labels := []string{"id", "name", "zone", "org", "project", "type", "private_ip", "public_ip", "arch"}
+	labels := []string{"id", "name", "zone", "org", "project_id", "project_name", "type", "private_ip", "public_ip", "arch"}
 	collector := &ServerCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
@@ -150,12 +150,23 @@ func (c *ServerCollector) Collect(ch chan<- prometheus.Metric) {
 				break
 			}
 
+			projectName, err := retrieveProject(c.logger, c.client, server.Project)
+			if err != nil {
+				c.logger.Error("Failed to retrieve project",
+					"project", server.Project,
+					"err", err,
+				)
+
+				continue
+			}
+
 			labels := []string{
 				server.ID,
 				server.Name,
 				server.Zone.String(),
 				server.Organization,
 				server.Project,
+				projectName,
 				server.CommercialType,
 				privateIP,
 				publicIP,
