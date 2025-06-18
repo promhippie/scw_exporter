@@ -157,6 +157,7 @@ func (c *ServerCollector) Collect(ch chan<- prometheus.Metric) {
 
 			if err != nil {
 				c.logger.Error("Got error retrieving project", "project", server.Project, "err", err)
+				continue
 			}
 
 			labels := []string{

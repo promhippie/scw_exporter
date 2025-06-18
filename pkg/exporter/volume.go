@@ -7,6 +7,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/promhippie/scw_exporter/pkg/config"
 
+	"github.com/scaleway/scaleway-sdk-go/api/account/v3"
 	"github.com/scaleway/scaleway-sdk-go/api/instance/v1"
 	"github.com/scaleway/scaleway-sdk-go/scw"
 )
@@ -15,6 +16,7 @@ import (
 type VolumeCollector struct {
 	client   *scw.Client
 	instance *instance.API
+	projects *account.ProjectAPI
 	logger   *slog.Logger
 	failures *prometheus.CounterVec
 	duration *prometheus.HistogramVec
@@ -36,10 +38,11 @@ func NewVolumeCollector(logger *slog.Logger, client *scw.Client, failures *prome
 		failures.WithLabelValues("volume").Add(0)
 	}
 
-	labels := []string{"id", "name", "zone", "org", "project"}
+	labels := []string{"id", "name", "zone", "org", "project", "project_name"}
 	collector := &VolumeCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
+		projects: account.NewProjectAPI(client),
 		logger:   logger.With("collector", "volume"),
 		failures: failures,
 		duration: duration,
@@ -148,12 +151,20 @@ func (c *VolumeCollector) Collect(ch chan<- prometheus.Metric) {
 				state      float64
 			)
 
+			prj, err := c.projects.GetProject(&account.ProjectAPIGetProjectRequest{ProjectID: volume.Project})
+
+			if err != nil {
+				c.logger.Error("Got error retrieving project", "project", volume.Project, "err", err)
+				continue
+			}
+
 			labels := []string{
 				volume.ID,
 				volume.Name,
 				volume.Zone.String(),
 				volume.Organization,
 				volume.Project,
+				prj.Name,
 			}
 
 			ch <- prometheus.MustNewConstMetric(

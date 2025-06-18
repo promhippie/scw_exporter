@@ -7,6 +7,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/promhippie/scw_exporter/pkg/config"
 
+	"github.com/scaleway/scaleway-sdk-go/api/account/v3"
 	"github.com/scaleway/scaleway-sdk-go/api/instance/v1"
 	"github.com/scaleway/scaleway-sdk-go/scw"
 )
@@ -15,6 +16,7 @@ import (
 type SnapshotCollector struct {
 	client   *scw.Client
 	instance *instance.API
+	projects *account.ProjectAPI
 	logger   *slog.Logger
 	failures *prometheus.CounterVec
 	duration *prometheus.HistogramVec
@@ -36,10 +38,11 @@ func NewSnapshotCollector(logger *slog.Logger, client *scw.Client, failures *pro
 		failures.WithLabelValues("snapshot").Add(0)
 	}
 
-	labels := []string{"id", "name", "zone", "org", "project"}
+	labels := []string{"id", "name", "zone", "org", "project", "project_name"}
 	collector := &SnapshotCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
+		projects: account.NewProjectAPI(client),
 		logger:   logger.With("collector", "snapshot"),
 		failures: failures,
 		duration: duration,
@@ -148,12 +151,20 @@ func (c *SnapshotCollector) Collect(ch chan<- prometheus.Metric) {
 				state      float64
 			)
 
+			prj, err := c.projects.GetProject(&account.ProjectAPIGetProjectRequest{ProjectID: snapshot.Project})
+
+			if err != nil {
+				c.logger.Error("Got error retrieving project", "project", snapshot.Project, "err", err)
+				continue
+			}
+
 			labels := []string{
 				snapshot.ID,
 				snapshot.Name,
 				snapshot.Zone.String(),
 				snapshot.Organization,
 				snapshot.Project,
+				prj.Name,
 			}
 
 			ch <- prometheus.MustNewConstMetric(
