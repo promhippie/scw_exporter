@@ -8,20 +8,22 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/promhippie/scw_exporter/pkg/config"
 
+	projects "github.com/scaleway/scaleway-sdk-go/api/account/v3"
 	billing "github.com/scaleway/scaleway-sdk-go/api/billing/v2beta1"
 	"github.com/scaleway/scaleway-sdk-go/scw"
 )
 
 // ConsumptionCollector collects metrics about resources consumption.
 type ConsumptionCollector struct {
-	client      *scw.Client
-	consumption *billing.API
-	logger      *slog.Logger
-	failures    *prometheus.CounterVec
-	duration    *prometheus.HistogramVec
-	config      config.Target
-	org         *string
-	project     *string
+	client        *scw.Client
+	consumption   *billing.API
+	projectClient *projects.ProjectAPI
+	logger        *slog.Logger
+	failures      *prometheus.CounterVec
+	duration      *prometheus.HistogramVec
+	config        config.Target
+	org           *string
+	project       *string
 
 	Value    *prometheus.Desc
 	Quantity *prometheus.Desc
@@ -35,12 +37,13 @@ func NewConsumptionCollector(logger *slog.Logger, client *scw.Client, failures *
 
 	labels := cfg.Consumption.Labels
 	collector := &ConsumptionCollector{
-		client:      client,
-		consumption: billing.NewAPI(client),
-		logger:      logger.With("collector", "consumption"),
-		failures:    failures,
-		duration:    duration,
-		config:      cfg,
+		client:        client,
+		consumption:   billing.NewAPI(client),
+		projectClient: projects.NewProjectAPI(client),
+		logger:        logger.With("collector", "consumption"),
+		failures:      failures,
+		duration:      duration,
+		config:        cfg,
 
 		Value: prometheus.NewDesc(
 			"scw_consumption_value",
@@ -128,11 +131,16 @@ func (c *ConsumptionCollector) Collect(ch chan<- prometheus.Metric) {
 		}
 
 		labels := []string{}
+		prj, err := c.projectClient.GetProject(&projects.ProjectAPIGetProjectRequest{ProjectID: consumption.ProjectID})
+		if err != nil {
+			c.logger.Error("Failed to get project", "project", consumption.ProjectID, "error", err)
+			continue
+		}
 
 		for _, label := range c.config.Consumption.Labels {
 			labels = append(
 				labels,
-				consumptionLabel(consumption, label),
+				consumptionLabel(consumption, prj, label),
 			)
 		}
 
@@ -152,7 +160,7 @@ func (c *ConsumptionCollector) Collect(ch chan<- prometheus.Metric) {
 	}
 }
 
-func consumptionLabel(consumption *billing.ListConsumptionsResponseConsumption, label string) string {
+func consumptionLabel(consumption *billing.ListConsumptionsResponseConsumption, prj *projects.Project, label string) string {
 	switch label {
 	case "category_name":
 		return consumption.CategoryName
@@ -166,6 +174,8 @@ func consumptionLabel(consumption *billing.ListConsumptionsResponseConsumption, 
 		return consumption.Sku
 	case "unit":
 		return consumption.Unit
+	case "project_name":
+		return prj.Name
 	case "currency":
 		if consumption.Value != nil {
 			return consumption.Value.CurrencyCode

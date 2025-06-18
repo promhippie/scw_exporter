@@ -7,6 +7,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/promhippie/scw_exporter/pkg/config"
 
+	"github.com/scaleway/scaleway-sdk-go/api/account/v3"
 	"github.com/scaleway/scaleway-sdk-go/api/instance/v1"
 	"github.com/scaleway/scaleway-sdk-go/scw"
 )
@@ -15,6 +16,7 @@ import (
 type SecurityGroupCollector struct {
 	client   *scw.Client
 	instance *instance.API
+	projects *account.ProjectAPI
 	logger   *slog.Logger
 	failures *prometheus.CounterVec
 	duration *prometheus.HistogramVec
@@ -39,10 +41,11 @@ func NewSecurityGroupCollector(logger *slog.Logger, client *scw.Client, failures
 		failures.WithLabelValues("security_group").Add(0)
 	}
 
-	labels := []string{"id", "name", "zone", "org", "project"}
+	labels := []string{"id", "name", "zone", "org", "project_id", "project_name"}
 	collector := &SecurityGroupCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
+		projects: account.NewProjectAPI(client),
 		logger:   logger.With("collector", "security_group"),
 		failures: failures,
 		duration: duration,
@@ -178,12 +181,19 @@ func (c *SecurityGroupCollector) Collect(ch chan<- prometheus.Metric) {
 				outboundDefault float64
 			)
 
+			prj, err := c.projects.GetProject(&account.ProjectAPIGetProjectRequest{ProjectID: securityGroup.Project})
+
+			if err != nil {
+				c.logger.Error("Error retrieving project", "project", securityGroup.Project, "err", err)
+			}
+
 			labels := []string{
 				securityGroup.ID,
 				securityGroup.Name,
 				securityGroup.Zone.String(),
 				securityGroup.Organization,
 				securityGroup.Project,
+				prj.Name,
 			}
 
 			ch <- prometheus.MustNewConstMetric(
