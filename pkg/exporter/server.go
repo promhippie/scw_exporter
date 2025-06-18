@@ -7,7 +7,6 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/promhippie/scw_exporter/pkg/config"
 
-	"github.com/scaleway/scaleway-sdk-go/api/account/v3"
 	"github.com/scaleway/scaleway-sdk-go/api/instance/v1"
 	"github.com/scaleway/scaleway-sdk-go/scw"
 )
@@ -16,7 +15,6 @@ import (
 type ServerCollector struct {
 	client   *scw.Client
 	instance *instance.API
-	projects *account.ProjectAPI
 	logger   *slog.Logger
 	failures *prometheus.CounterVec
 	duration *prometheus.HistogramVec
@@ -41,7 +39,6 @@ func NewServerCollector(logger *slog.Logger, client *scw.Client, failures *prome
 	collector := &ServerCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
-		projects: account.NewProjectAPI(client),
 		logger:   logger.With("collector", "server"),
 		failures: failures,
 		duration: duration,
@@ -153,7 +150,7 @@ func (c *ServerCollector) Collect(ch chan<- prometheus.Metric) {
 				break
 			}
 
-			prj, err := c.projects.GetProject(&account.ProjectAPIGetProjectRequest{ProjectID: server.Project})
+			prj, err := retrieveProject(c.client, server.Project)
 
 			if err != nil {
 				c.logger.Error("Got error retrieving project", "project", server.Project, "err", err)
@@ -170,7 +167,7 @@ func (c *ServerCollector) Collect(ch chan<- prometheus.Metric) {
 				privateIP,
 				publicIP,
 				server.Arch.String(),
-				prj.Name,
+				prj,
 			}
 
 			switch val := server.State; val {
