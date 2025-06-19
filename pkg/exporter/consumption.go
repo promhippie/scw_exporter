@@ -128,11 +128,16 @@ func (c *ConsumptionCollector) Collect(ch chan<- prometheus.Metric) {
 		}
 
 		labels := []string{}
+		prj, err := retrieveProject(c.client, consumption.ProjectID)
+		if err != nil {
+			c.logger.Error("Failed to get project", "project", consumption.ProjectID, "error", err)
+			continue
+		}
 
 		for _, label := range c.config.Consumption.Labels {
 			labels = append(
 				labels,
-				consumptionLabel(consumption, label),
+				consumptionLabel(consumption, prj, label),
 			)
 		}
 
@@ -152,7 +157,7 @@ func (c *ConsumptionCollector) Collect(ch chan<- prometheus.Metric) {
 	}
 }
 
-func consumptionLabel(consumption *billing.ListConsumptionsResponseConsumption, label string) string {
+func consumptionLabel(consumption *billing.ListConsumptionsResponseConsumption, prj string, label string) string {
 	switch label {
 	case "category_name":
 		return consumption.CategoryName
@@ -166,6 +171,8 @@ func consumptionLabel(consumption *billing.ListConsumptionsResponseConsumption, 
 		return consumption.Sku
 	case "unit":
 		return consumption.Unit
+	case "project_name":
+		return prj
 	case "currency":
 		if consumption.Value != nil {
 			return consumption.Value.CurrencyCode

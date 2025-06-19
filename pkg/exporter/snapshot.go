@@ -36,7 +36,7 @@ func NewSnapshotCollector(logger *slog.Logger, client *scw.Client, failures *pro
 		failures.WithLabelValues("snapshot").Add(0)
 	}
 
-	labels := []string{"id", "name", "zone", "org", "project"}
+	labels := []string{"id", "name", "zone", "org", "project", "project_name"}
 	collector := &SnapshotCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
@@ -148,12 +148,20 @@ func (c *SnapshotCollector) Collect(ch chan<- prometheus.Metric) {
 				state      float64
 			)
 
+			prj, err := retrieveProject(c.client, snapshot.Project)
+
+			if err != nil {
+				c.logger.Error("Got error retrieving project", "project", snapshot.Project, "err", err)
+				continue
+			}
+
 			labels := []string{
 				snapshot.ID,
 				snapshot.Name,
 				snapshot.Zone.String(),
 				snapshot.Organization,
 				snapshot.Project,
+				prj,
 			}
 
 			ch <- prometheus.MustNewConstMetric(
