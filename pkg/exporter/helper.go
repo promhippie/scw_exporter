@@ -13,24 +13,24 @@ func init() {
 	projectCache = make(map[string]string, 0)
 }
 
-func retrieveProject(client *scw.Client, projectId string) (string, error) {
+func retrieveProject(client *scw.Client, projectID string) (string, error) {
 
-	if projectName, ok := projectCache[projectId]; ok {
-		log.Info("Hit in cache", "project", projectId, "project_name", projectName)
+	if projectName, ok := projectCache[projectID]; ok {
+		log.Info("Hit in cache", "project", projectID, "project_name", projectName)
 		return projectName, nil
 	}
 
 	projectClient := account.NewProjectAPI(client)
 
-	project, err := projectClient.GetProject(&account.ProjectAPIGetProjectRequest{ProjectID: projectId})
+	project, err := projectClient.GetProject(&account.ProjectAPIGetProjectRequest{ProjectID: projectID})
 
 	if err != nil {
-		log.Error("Got error retrieving project", "project", projectId, "err", err)
+		log.Error("Got error retrieving project", "project", projectID, "err", err)
 		return "", err
 	}
 
 	log.Info("Got project from the api", "project", project)
-	projectCache[projectId] = project.Name
+	projectCache[projectID] = project.Name
 	return project.Name, nil
 }
 
