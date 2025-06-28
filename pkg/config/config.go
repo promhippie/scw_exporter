@@ -74,6 +74,7 @@ func ConsumptionLabels() []string {
 		"sku",
 		"unit",
 		"currency",
+		"project_name",
 	}
 }
 
