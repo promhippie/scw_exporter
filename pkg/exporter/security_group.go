@@ -39,7 +39,7 @@ func NewSecurityGroupCollector(logger *slog.Logger, client *scw.Client, failures
 		failures.WithLabelValues("security_group").Add(0)
 	}
 
-	labels := []string{"id", "name", "zone", "org", "project"}
+	labels := []string{"id", "name", "zone", "org", "project_id", "project_name"}
 	collector := &SecurityGroupCollector{
 		client:   client,
 		instance: instance.NewAPI(client),
@@ -178,12 +178,19 @@ func (c *SecurityGroupCollector) Collect(ch chan<- prometheus.Metric) {
 				outboundDefault float64
 			)
 
+			prj, err := retrieveProject(c.client, securityGroup.Project)
+
+			if err != nil {
+				c.logger.Error("Error retrieving project", "project", securityGroup.Project, "err", err)
+			}
+
 			labels := []string{
 				securityGroup.ID,
 				securityGroup.Name,
 				securityGroup.Zone.String(),
 				securityGroup.Organization,
 				securityGroup.Project,
+				prj,
 			}
 
 			ch <- prometheus.MustNewConstMetric(
