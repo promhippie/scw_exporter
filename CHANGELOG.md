@@ -1,4 +1,7 @@
-# Changelog for 1.2.1
+# Changelog
+
+
+## 1.2.1
 
 The following sections list the changes for 1.2.1.
 
@@ -18,7 +21,7 @@ The following sections list the changes for 1.2.1.
    https://github.com/promhippie/scw_exporter/issues/138
 
 
-# Changelog for 1.2.0
+## 1.2.0
 
 The following sections list the changes for 1.2.0.
 
@@ -45,7 +48,7 @@ The following sections list the changes for 1.2.0.
    https://github.com/promhippie/scw_exporter/pull/114
 
 
-# Changelog for 1.1.0
+## 1.1.0
 
 The following sections list the changes for 1.1.0.
 
@@ -84,7 +87,7 @@ The following sections list the changes for 1.1.0.
    https://github.com/promhippie/scw_exporter/pull/53
 
 
-# Changelog for 1.0.0
+## 1.0.0
 
 The following sections list the changes for 1.0.0.
 
@@ -110,7 +113,7 @@ The following sections list the changes for 1.0.0.
    https://github.com/promhippie/scw_exporter/issues/14
 
 
-# Changelog for 0.1.0
+## 0.1.0
 
 The following sections list the changes for 0.1.0.
 

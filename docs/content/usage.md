@@ -69,7 +69,7 @@ like this to the `docker-compose.yml` file:
 {{< highlight diff >}}
   scw_exporter:
 -   image: promhippie/scw-exporter:latest
-+   image: promhippie/scw-exporter:1.0.0
++   image: promhippie/scw-exporter:x.x.x
     restart: always
     environment:
       - SCW_EXPORTER_ACESS_KEY=your-access-key
