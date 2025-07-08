@@ -608,57 +608,57 @@ take a look at the <a href="https://github.com/prometheus/client_golang/blob/mas
 <dd>Histogram of latencies for requests to the api per collector</dd>
 <dt>scw_request_failures_total{collector}</dt>
 <dd>Total number of failed requests to the api per collector</dd>
-<dt>scw_security_group_created_timestamp{id, name, zone, org, project}</dt>
+<dt>scw_security_group_created_timestamp{id, name, zone, org, project_id, project_name}</dt>
 <dd>Timestamp when the security group have been created</dd>
-<dt>scw_security_group_defined{id, name, zone, org, project}</dt>
+<dt>scw_security_group_defined{id, name, zone, org, project_id, project_name}</dt>
 <dd>Constant value of 1 that this security group is defined</dd>
-<dt>scw_security_group_enable_default{id, name, zone, org, project}</dt>
+<dt>scw_security_group_enable_default{id, name, zone, org, project_id, project_name}</dt>
 <dd>1 if the security group is enabled by default, 0 otherwise</dd>
-<dt>scw_security_group_inbound_default_policy{id, name, zone, org, project}</dt>
+<dt>scw_security_group_inbound_default_policy{id, name, zone, org, project_id, project_name}</dt>
 <dd>1 if the security group inbound default policy is accept, 0 otherwise</dd>
-<dt>scw_security_group_modified_timestamp{id, name, zone, org, project}</dt>
+<dt>scw_security_group_modified_timestamp{id, name, zone, org, project_id, project_name}</dt>
 <dd>Timestamp when the security group have been modified</dd>
-<dt>scw_security_group_outbound_default_policy{id, name, zone, org, project}</dt>
+<dt>scw_security_group_outbound_default_policy{id, name, zone, org, project_id, project_name}</dt>
 <dd>1 if the security group outbound default policy is accept, 0 otherwise</dd>
-<dt>scw_security_group_project_default{id, name, zone, org, project}</dt>
+<dt>scw_security_group_project_default{id, name, zone, org, project_id, project_name}</dt>
 <dd>1 if the security group is an project default, 0 otherwise</dd>
-<dt>scw_security_group_servers_count{id, name, zone, org, project}</dt>
+<dt>scw_security_group_servers_count{id, name, zone, org, project_id, project_name}</dt>
 <dd>Number of servers attached to the security group</dd>
-<dt>scw_security_group_stateful{id, name, zone, org, project}</dt>
+<dt>scw_security_group_stateful{id, name, zone, org, project_id, project_name}</dt>
 <dd>1 if the security group is stateful by default, 0 otherwise</dd>
-<dt>scw_server_created_timestamp{id, name, zone, org, project, type, private_ip, public_ip, arch}</dt>
+<dt>scw_server_created_timestamp{id, name, zone, org, project_id, project_name, type, private_ip, public_ip, arch}</dt>
 <dd>Timestamp when the server have been created</dd>
-<dt>scw_server_modified_timestamp{id, name, zone, org, project, type, private_ip, public_ip, arch}</dt>
+<dt>scw_server_modified_timestamp{id, name, zone, org, project_id, project_name, type, private_ip, public_ip, arch}</dt>
 <dd>Timestamp when the server have been modified</dd>
-<dt>scw_server_private_nic_count{id, name, zone, org, project, type, private_ip, public_ip, arch}</dt>
+<dt>scw_server_private_nic_count{id, name, zone, org, project_id, project_name, type, private_ip, public_ip, arch}</dt>
 <dd>Number of private nics attached</dd>
-<dt>scw_server_state{id, name, zone, org, project, type, private_ip, public_ip, arch}</dt>
+<dt>scw_server_state{id, name, zone, org, project_id, project_name, type, private_ip, public_ip, arch}</dt>
 <dd>If 1 the server is running, depending on the state otherwise</dd>
-<dt>scw_server_volume_count{id, name, zone, org, project, type, private_ip, public_ip, arch}</dt>
+<dt>scw_server_volume_count{id, name, zone, org, project_id, project_name, type, private_ip, public_ip, arch}</dt>
 <dd>Number of volumes attached</dd>
-<dt>scw_snapshot_available{id, name, zone, org, project}</dt>
+<dt>scw_snapshot_available{id, name, zone, org, project_id, project_name}</dt>
 <dd>Constant value of 1 that this snapshot is available</dd>
-<dt>scw_snapshot_created_timestamp{id, name, zone, org, project}</dt>
+<dt>scw_snapshot_created_timestamp{id, name, zone, org, project_id, project_name}</dt>
 <dd>Timestamp when the snapshot have been created</dd>
-<dt>scw_snapshot_modified_timestamp{id, name, zone, org, project}</dt>
+<dt>scw_snapshot_modified_timestamp{id, name, zone, org, project_id, project_name}</dt>
 <dd>Timestamp when the snapshot have been modified</dd>
-<dt>scw_snapshot_size_bytes{id, name, zone, org, project}</dt>
+<dt>scw_snapshot_size_bytes{id, name, zone, org, project_id, project_name}</dt>
 <dd>Size of the snapshot in bytes</dd>
-<dt>scw_snapshot_state{id, name, zone, org, project}</dt>
+<dt>scw_snapshot_state{id, name, zone, org, project_id, project_name}</dt>
 <dd>State of the snapshot</dd>
-<dt>scw_snapshot_type{id, name, zone, org, project}</dt>
+<dt>scw_snapshot_type{id, name, zone, org, project_id, project_name}</dt>
 <dd>Type of the snapshot</dd>
-<dt>scw_volume_available{id, name, zone, org, project}</dt>
+<dt>scw_volume_available{id, name, zone, org, project_id, project_name}</dt>
 <dd>Constant value of 1 that this volume is available</dd>
-<dt>scw_volume_created_timestamp{id, name, zone, org, project}</dt>
+<dt>scw_volume_created_timestamp{id, name, zone, org, project_id, project_name}</dt>
 <dd>Timestamp when the volume have been created</dd>
-<dt>scw_volume_modified_timestamp{id, name, zone, org, project}</dt>
+<dt>scw_volume_modified_timestamp{id, name, zone, org, project_id, project_name}</dt>
 <dd>Timestamp when the volume have been modified</dd>
-<dt>scw_volume_size_bytes{id, name, zone, org, project}</dt>
+<dt>scw_volume_size_bytes{id, name, zone, org, project_id, project_name}</dt>
 <dd>Size of the volume in bytes</dd>
-<dt>scw_volume_state{id, name, zone, org, project}</dt>
+<dt>scw_volume_state{id, name, zone, org, project_id, project_name}</dt>
 <dd>State of the snapshot</dd>
-<dt>scw_volume_type{id, name, zone, org, project}</dt>
+<dt>scw_volume_type{id, name, zone, org, project_id, project_name}</dt>
 <dd>Type of the snapshot</dd>
 </dl>
 
