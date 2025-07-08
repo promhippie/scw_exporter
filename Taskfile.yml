@@ -80,7 +80,7 @@ tasks:
     desc: Run reloading development server
     cmds:
       - task: build:server
-      - bin/scw_exporter
+      - bin/scw_exporter --log.level=debug --log.pretty
     watch: true
     method: none
     sources:
