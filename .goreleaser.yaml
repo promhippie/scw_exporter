@@ -4,7 +4,7 @@ version: 2
 builds:
   - id: server
     main: ./cmd/scw_exporter
-    binary: scw-exporter
+    binary: scw_exporter
     env:
       - CGO_ENABLED=0
     ldflags:
