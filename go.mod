@@ -4,11 +4,12 @@ go 1.24.0
 
 require (
 	github.com/go-chi/chi/v5 v5.2.2
+	github.com/jellydator/ttlcache/v3 v3.4.0
 	github.com/joho/godotenv v1.5.1
 	github.com/oklog/run v1.2.0
 	github.com/prometheus/client_golang v1.22.0
 	github.com/prometheus/exporter-toolkit v0.14.0
-	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.33
+	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.34
 	github.com/stretchr/testify v1.10.0
 	github.com/urfave/cli/v3 v3.3.8
 )
@@ -104,7 +105,6 @@ require (
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/hexops/gotextdiff v1.0.3 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
-	github.com/jellydator/ttlcache/v3 v3.4.0 // indirect
 	github.com/jgautheron/goconst v1.8.2 // indirect
 	github.com/jingyugao/rowserrcheck v1.1.1 // indirect
 	github.com/jjti/go-spancheck v0.6.5 // indirect
