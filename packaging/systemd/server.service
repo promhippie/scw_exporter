@@ -1,0 +1,20 @@
+[Unit]
+Description=Prometheus exporter for Scaleway
+Documentation=https://promhippie.github.io/scw_exporter/
+
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+User=scw-exporter
+Group=scw-exporter
+EnvironmentFile=-/etc/default/scw-exporter
+EnvironmentFile=-/etc/sysconfig/scw-exporter
+ExecStart=/usr/bin/scw_exporter $SCW_EXPORTER_ARGS
+WorkingDirectory=/var/lib/scw-exporter
+Restart=always
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
