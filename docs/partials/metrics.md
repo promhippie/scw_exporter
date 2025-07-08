@@ -49,80 +49,80 @@ scw_request_duration_seconds{collector}
 scw_request_failures_total{collector}
 : Total number of failed requests to the api per collector
 
-scw_security_group_created_timestamp{id, name, zone, org, project}
+scw_security_group_created_timestamp{id, name, zone, org, project_id, project_name}
 : Timestamp when the security group have been created
 
-scw_security_group_defined{id, name, zone, org, project}
+scw_security_group_defined{id, name, zone, org, project_id, project_name}
 : Constant value of 1 that this security group is defined
 
-scw_security_group_enable_default{id, name, zone, org, project}
+scw_security_group_enable_default{id, name, zone, org, project_id, project_name}
 : 1 if the security group is enabled by default, 0 otherwise
 
-scw_security_group_inbound_default_policy{id, name, zone, org, project}
+scw_security_group_inbound_default_policy{id, name, zone, org, project_id, project_name}
 : 1 if the security group inbound default policy is accept, 0 otherwise
 
-scw_security_group_modified_timestamp{id, name, zone, org, project}
+scw_security_group_modified_timestamp{id, name, zone, org, project_id, project_name}
 : Timestamp when the security group have been modified
 
-scw_security_group_outbound_default_policy{id, name, zone, org, project}
+scw_security_group_outbound_default_policy{id, name, zone, org, project_id, project_name}
 : 1 if the security group outbound default policy is accept, 0 otherwise
 
-scw_security_group_project_default{id, name, zone, org, project}
+scw_security_group_project_default{id, name, zone, org, project_id, project_name}
 : 1 if the security group is an project default, 0 otherwise
 
-scw_security_group_servers_count{id, name, zone, org, project}
+scw_security_group_servers_count{id, name, zone, org, project_id, project_name}
 : Number of servers attached to the security group
 
-scw_security_group_stateful{id, name, zone, org, project}
+scw_security_group_stateful{id, name, zone, org, project_id, project_name}
 : 1 if the security group is stateful by default, 0 otherwise
 
-scw_server_created_timestamp{id, name, zone, org, project, type, private_ip, public_ip, arch}
+scw_server_created_timestamp{id, name, zone, org, project_id, project_name, type, private_ip, public_ip, arch}
 : Timestamp when the server have been created
 
-scw_server_modified_timestamp{id, name, zone, org, project, type, private_ip, public_ip, arch}
+scw_server_modified_timestamp{id, name, zone, org, project_id, project_name, type, private_ip, public_ip, arch}
 : Timestamp when the server have been modified
 
-scw_server_private_nic_count{id, name, zone, org, project, type, private_ip, public_ip, arch}
+scw_server_private_nic_count{id, name, zone, org, project_id, project_name, type, private_ip, public_ip, arch}
 : Number of private nics attached
 
-scw_server_state{id, name, zone, org, project, type, private_ip, public_ip, arch}
+scw_server_state{id, name, zone, org, project_id, project_name, type, private_ip, public_ip, arch}
 : If 1 the server is running, depending on the state otherwise
 
-scw_server_volume_count{id, name, zone, org, project, type, private_ip, public_ip, arch}
+scw_server_volume_count{id, name, zone, org, project_id, project_name, type, private_ip, public_ip, arch}
 : Number of volumes attached
 
-scw_snapshot_available{id, name, zone, org, project}
+scw_snapshot_available{id, name, zone, org, project_id, project_name}
 : Constant value of 1 that this snapshot is available
 
-scw_snapshot_created_timestamp{id, name, zone, org, project}
+scw_snapshot_created_timestamp{id, name, zone, org, project_id, project_name}
 : Timestamp when the snapshot have been created
 
-scw_snapshot_modified_timestamp{id, name, zone, org, project}
+scw_snapshot_modified_timestamp{id, name, zone, org, project_id, project_name}
 : Timestamp when the snapshot have been modified
 
-scw_snapshot_size_bytes{id, name, zone, org, project}
+scw_snapshot_size_bytes{id, name, zone, org, project_id, project_name}
 : Size of the snapshot in bytes
 
-scw_snapshot_state{id, name, zone, org, project}
+scw_snapshot_state{id, name, zone, org, project_id, project_name}
 : State of the snapshot
 
-scw_snapshot_type{id, name, zone, org, project}
+scw_snapshot_type{id, name, zone, org, project_id, project_name}
 : Type of the snapshot
 
-scw_volume_available{id, name, zone, org, project}
+scw_volume_available{id, name, zone, org, project_id, project_name}
 : Constant value of 1 that this volume is available
 
-scw_volume_created_timestamp{id, name, zone, org, project}
+scw_volume_created_timestamp{id, name, zone, org, project_id, project_name}
 : Timestamp when the volume have been created
 
-scw_volume_modified_timestamp{id, name, zone, org, project}
+scw_volume_modified_timestamp{id, name, zone, org, project_id, project_name}
 : Timestamp when the volume have been modified
 
-scw_volume_size_bytes{id, name, zone, org, project}
+scw_volume_size_bytes{id, name, zone, org, project_id, project_name}
 : Size of the volume in bytes
 
-scw_volume_state{id, name, zone, org, project}
+scw_volume_state{id, name, zone, org, project_id, project_name}
 : State of the snapshot
 
-scw_volume_type{id, name, zone, org, project}
+scw_volume_type{id, name, zone, org, project_id, project_name}
 : Type of the snapshot
