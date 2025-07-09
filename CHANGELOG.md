@@ -1,5 +1,33 @@
 # Changelog
 
+## [2.0.0](https://github.com/promhippie/scw_exporter/compare/v1.2.1...v2.0.0) (2025-07-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename project label and add project name labels
+* restructure build and release process
+
+### Features
+
+* **deps:** update module github.com/oklog/run to v1.2.0 ([#142](https://github.com/promhippie/scw_exporter/issues/142)) ([d12d784](https://github.com/promhippie/scw_exporter/commit/d12d78436d8033312e00d1c5842ec8b56cba70f7))
+* rename project label and add project name labels ([b4228db](https://github.com/promhippie/scw_exporter/commit/b4228db64a9001064713ff5d0146abe992a02f5d))
+* restructure build and release process ([3dc26ed](https://github.com/promhippie/scw_exporter/commit/3dc26ed88a59e6ccf8cfd62ed2d7eca493becfbd))
+
+
+### Bugfixes
+
+* **deps:** update module github.com/go-chi/chi/v5 to v5.2.2 ([#141](https://github.com/promhippie/scw_exporter/issues/141)) ([5d65abc](https://github.com/promhippie/scw_exporter/commit/5d65abc0e9261f10728f93bf373d33fd47ca2d7a))
+* **deps:** update module github.com/scaleway/scaleway-sdk-go to v1.0.0-beta.34 ([47691fa](https://github.com/promhippie/scw_exporter/commit/47691fa65e9adcb3921407f8c331b03a4c6d28b2))
+
+
+### Miscellaneous
+
+* **deps:** pin dependencies ([4c8f517](https://github.com/promhippie/scw_exporter/commit/4c8f5175e6230b755abe372f249f2b9ba195a85e))
+* enable logging for watch task ([44c9e4b](https://github.com/promhippie/scw_exporter/commit/44c9e4bde75e9f33a840d62beb3627564af5fc4b))
+* **flake:** updated lockfile [skip ci] ([e6fc8f7](https://github.com/promhippie/scw_exporter/commit/e6fc8f7d53cc412fe39ab81ca0cd3a1cf7934ba1))
+* **flake:** updated lockfile [skip ci] ([74b5922](https://github.com/promhippie/scw_exporter/commit/74b5922d4eb73cd205fdb0c3c1950035ff6b8ae5))
+* **flake:** updated lockfile [skip ci] ([14b2657](https://github.com/promhippie/scw_exporter/commit/14b2657255536accaf87db66087a83cf942a7af3))
 
 ## 1.2.1
 
@@ -128,5 +156,3 @@ The following sections list the changes for 0.1.0.
    Just prepared an initial basic version which could be released to the public.
 
    https://github.com/promhippie/scw_exporter/issues/11
-
-
