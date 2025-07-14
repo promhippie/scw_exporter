@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.1.0](https://github.com/promhippie/scw_exporter/compare/v2.0.0...v2.1.0) (2025-07-14)
+
+
+### Features
+
+* **deps:** update module github.com/mgechev/revive to v1.11.0 ([c932188](https://github.com/promhippie/scw_exporter/commit/c93218820d748373496d95eaca7807728a953e7b))
+
+
+### Bugfixes
+
+* **deps:** update golang docker tag to v1.24.5 ([fb09cc5](https://github.com/promhippie/scw_exporter/commit/fb09cc5f0d545b4104ee51732be4f3b5b16f8245))
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.2.2 ([fc72fd7](https://github.com/promhippie/scw_exporter/commit/fc72fd769b3a6f1dba18fc8370a7942ab967227e))
+
 ## [2.0.0](https://github.com/promhippie/scw_exporter/compare/v1.2.1...v2.0.0) (2025-07-09)
 
 
