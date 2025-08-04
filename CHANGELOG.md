@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.1](https://github.com/promhippie/scw_exporter/compare/v2.2.0...v2.2.1) (2025-08-04)
+
+
+### Bugfixes
+
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.3.1 ([d659ac3](https://github.com/promhippie/scw_exporter/commit/d659ac37a310826e4a269e3a71a48487684dbd7e))
+* **deps:** update module github.com/prometheus/client_golang to v1.23.0 ([f95115f](https://github.com/promhippie/scw_exporter/commit/f95115f00dc9d9e88dcf50831a910d6911ec6560))
+
 ## [2.2.0](https://github.com/promhippie/scw_exporter/compare/v2.1.0...v2.2.0) (2025-07-28)
 
 
