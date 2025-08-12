@@ -11,7 +11,7 @@ require (
 	github.com/prometheus/exporter-toolkit v0.14.0
 	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.34
 	github.com/stretchr/testify v1.10.0
-	github.com/urfave/cli/v3 v3.4.0
+	github.com/urfave/cli/v3 v3.4.1
 )
 
 require (
