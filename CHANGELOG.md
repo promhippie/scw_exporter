@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.2.3](https://github.com/promhippie/scw_exporter/compare/v2.2.2...v2.2.3) (2025-08-18)
+
+
+### Bugfixes
+
+* correctly hand over goos/goarch to build task ([1c5de46](https://github.com/promhippie/scw_exporter/commit/1c5de4610ef7d7755e21e4760d395ecc0a99e561))
+* **deps:** update golang docker tag to v1.25.0 ([cc39212](https://github.com/promhippie/scw_exporter/commit/cc39212871467022f26187940bbf1b145db68fb6))
+* **deps:** update golang:1.25.0-alpine3.21 docker digest to a92c1ab ([d821014](https://github.com/promhippie/scw_exporter/commit/d821014a97c76ae4f30187f25efd987f292bd885))
+* **deps:** update golang:1.25.0-alpine3.21 docker digest to c8e1680 ([70ce167](https://github.com/promhippie/scw_exporter/commit/70ce1675bca88b5111f5aaa0cfe94a79abefd955))
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.4.0 ([cdeac82](https://github.com/promhippie/scw_exporter/commit/cdeac827c959c159b59bc5edeead0e74b9c6e712))
+* **deps:** update module github.com/urfave/cli/v3 to v3.3.9 ([863d243](https://github.com/promhippie/scw_exporter/commit/863d243ad024da5a40ab165417d46f6ffc04faed))
+* **deps:** update module github.com/urfave/cli/v3 to v3.4.0 ([7bfbc36](https://github.com/promhippie/scw_exporter/commit/7bfbc36bbdfa3b67fcd3805c7f9624e53fe8529f))
+* **deps:** update module github.com/urfave/cli/v3 to v3.4.1 ([a758c05](https://github.com/promhippie/scw_exporter/commit/a758c05ed6de72842dc3d873f5f628e6e4f8ac16))
+
 ## [2.2.2](https://github.com/promhippie/scw_exporter/compare/v2.2.1...v2.2.2) (2025-08-11)
 
 
