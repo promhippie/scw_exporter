@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.4](https://github.com/promhippie/scw_exporter/compare/v2.2.3...v2.2.4) (2025-08-25)
+
+
+### Bugfixes
+
+* **deps:** update module github.com/stretchr/testify to v1.11.0 ([ae84d96](https://github.com/promhippie/scw_exporter/commit/ae84d96ff54a930b1f8591b6b23024cafdddf7a3))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([2a043b3](https://github.com/promhippie/scw_exporter/commit/2a043b39f639230f8f46b01fc23a1de68993535e))
+
 ## [2.2.3](https://github.com/promhippie/scw_exporter/compare/v2.2.2...v2.2.3) (2025-08-18)
 
 
