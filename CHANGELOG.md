@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.2.6](https://github.com/promhippie/scw_exporter/compare/v2.2.5...v2.2.6) (2025-09-08)
+
+
+### Bugfixes
+
+* **deps:** update golang docker tag to v1.25.1 ([018ed3c](https://github.com/promhippie/scw_exporter/commit/018ed3c29c62f2c23b9af9fc5531989126ba6424))
+* **deps:** update golang:1.25.1-alpine3.21 docker digest to 331bde4 ([a4ebaef](https://github.com/promhippie/scw_exporter/commit/a4ebaefb3f40dd69ff244faebddd9ce8a3add5e8))
+* **deps:** update golang:1.25.1-alpine3.21 docker digest to a887c10 ([d0c080a](https://github.com/promhippie/scw_exporter/commit/d0c080a41e28c260d3b62cc2a0066a48b77777e3))
+* **deps:** update module github.com/prometheus/client_golang to v1.23.1 ([6e9de76](https://github.com/promhippie/scw_exporter/commit/6e9de76fc2cade57979730789fd068d7f81e02a8))
+* **deps:** update module github.com/prometheus/client_golang to v1.23.2 ([defbb9c](https://github.com/promhippie/scw_exporter/commit/defbb9cb57d1805a9f31344f60b69ed3aa39dcd5))
+* **deps:** update module github.com/prometheus/exporter-toolkit to v0.14.1 ([70c4bb8](https://github.com/promhippie/scw_exporter/commit/70c4bb8161f39e563ac3b6e061192f8bfcdf28fb))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([56cd3bd](https://github.com/promhippie/scw_exporter/commit/56cd3bda4271a36c1ee5a9657baf6d185eb2be55))
+
 ## [2.2.5](https://github.com/promhippie/scw_exporter/compare/v2.2.4...v2.2.5) (2025-09-01)
 
 
