@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.2.7](https://github.com/promhippie/scw_exporter/compare/v2.2.6...v2.2.7) (2025-09-22)
+
+
+### Bugfixes
+
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.5.0 ([84186d0](https://github.com/promhippie/scw_exporter/commit/84186d04b14f4cb4b24e6c6c50e8b3b29a882372))
+* **deps:** update module github.com/scaleway/scaleway-sdk-go to v1.0.0-beta.35 ([2c9edfb](https://github.com/promhippie/scw_exporter/commit/2c9edfbe260b61c14c7cc5ed4b1cbe1e50e4afc2))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([a7a3fb6](https://github.com/promhippie/scw_exporter/commit/a7a3fb6e9361b437986a4f8f5bcdd27aff7eb782))
+* **flake:** updated lockfile [skip ci] ([1af5358](https://github.com/promhippie/scw_exporter/commit/1af5358675da31e8258b5f64f13a52849ce39c1e))
+* move from baltorepo to cloudsmith ([e8f5967](https://github.com/promhippie/scw_exporter/commit/e8f596782937617f7e30d424e05c9c8b85f97f5f))
+
 ## [2.2.6](https://github.com/promhippie/scw_exporter/compare/v2.2.5...v2.2.6) (2025-09-08)
 
 
