@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.2.8](https://github.com/promhippie/scw_exporter/compare/v2.2.7...v2.2.8) (2025-10-13)
+
+
+### Bugfixes
+
+* **deps:** update alpine:3.22 docker digest to 4b7ce07 ([4dac6f3](https://github.com/promhippie/scw_exporter/commit/4dac6f3881a69a2291840cc6fc248140efb38f11))
+* **deps:** update golang docker tag to v1.25.2 ([e8c8ce6](https://github.com/promhippie/scw_exporter/commit/e8c8ce6b115f663038e512a3276769ed7a8139fc))
+* **deps:** update golang:1.25.2-alpine3.21 docker digest to 0134653 ([98297c3](https://github.com/promhippie/scw_exporter/commit/98297c30ea67991c6d53b1f373b2949142d79c64))
+* **deps:** update golang:1.25.2-alpine3.21 docker digest to 0ae17b3 ([b2dc970](https://github.com/promhippie/scw_exporter/commit/b2dc970c10df66b501d67a03b0051f309df184b1))
+* **deps:** update golang:1.25.2-alpine3.21 docker digest to 7300a8d ([bf4b004](https://github.com/promhippie/scw_exporter/commit/bf4b004f88a45e52ff0822b085b5a2a7b1b6bb54))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([afb0e8c](https://github.com/promhippie/scw_exporter/commit/afb0e8c14b99dba5f13c4bf33838bd853e6cc391))
+* **flake:** updated lockfile [skip ci] ([40dda79](https://github.com/promhippie/scw_exporter/commit/40dda79a896ce557db56b8807d5561910f0b2bbf))
+* **flake:** updated lockfile [skip ci] ([3404cd8](https://github.com/promhippie/scw_exporter/commit/3404cd81fd03e24079a6417d60cc51588c844f5d))
+
 ## [2.2.7](https://github.com/promhippie/scw_exporter/compare/v2.2.6...v2.2.7) (2025-09-22)
 
 
