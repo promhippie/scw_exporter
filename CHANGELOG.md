@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.9](https://github.com/promhippie/scw_exporter/compare/v2.2.8...v2.2.9) (2025-10-20)
+
+
+### Bugfixes
+
+* **deps:** update golang docker tag to v1.25.3 ([2e9b20d](https://github.com/promhippie/scw_exporter/commit/2e9b20dbd0d42efb88cf8033d7188c63c5677e9b))
+* **deps:** update golang:1.25.3-alpine3.21 docker digest to 0c9f3e0 ([b00b9a7](https://github.com/promhippie/scw_exporter/commit/b00b9a75f461bfb991abcbd2d7ce9c7e1d2cbcac))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([71893b3](https://github.com/promhippie/scw_exporter/commit/71893b3756f941fce773f13498e9f7e7053884ae))
+
 ## [2.2.8](https://github.com/promhippie/scw_exporter/compare/v2.2.7...v2.2.8) (2025-10-13)
 
 
