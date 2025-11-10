@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.2.12](https://github.com/promhippie/scw_exporter/compare/v2.2.11...v2.2.12) (2025-11-10)
+
+
+### Bugfixes
+
+* **deps:** update golang docker tag to v1.25.4 ([5172733](https://github.com/promhippie/scw_exporter/commit/5172733bf512f5dd31c95ff2638c0812d9fad2ea))
+* **deps:** update golang:1.25.4-alpine3.21 docker digest to 3289aac ([f6bb369](https://github.com/promhippie/scw_exporter/commit/f6bb3695fc028ab50c57ed1b3a76e8a943bb2571))
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.6.1 ([f6fd3f4](https://github.com/promhippie/scw_exporter/commit/f6fd3f4d056d00531c6c21b69cb7c271d29bd6bd))
+* **deps:** update module github.com/urfave/cli/v3 to v3.6.0 ([68d1ca8](https://github.com/promhippie/scw_exporter/commit/68d1ca87df45942a61fb36bfd498f050de48c528))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([26c5cc4](https://github.com/promhippie/scw_exporter/commit/26c5cc4959c57cb221906c6810e86273507cac8f))
+
 ## [2.2.11](https://github.com/promhippie/scw_exporter/compare/v2.2.10...v2.2.11) (2025-11-03)
 
 
