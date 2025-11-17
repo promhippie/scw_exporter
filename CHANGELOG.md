@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.2.13](https://github.com/promhippie/scw_exporter/compare/v2.2.12...v2.2.13) (2025-11-17)
+
+
+### Bugfixes
+
+* **deps:** update module github.com/golangci/golangci-lint/v2 to v2.6.2 ([065c8f5](https://github.com/promhippie/scw_exporter/commit/065c8f5c34de79b99f7d54b83367e5a4a5eb2e6e))
+* **deps:** update module github.com/urfave/cli/v3 to v3.6.1 ([be619e4](https://github.com/promhippie/scw_exporter/commit/be619e4e5a54d4bbca570e3ec87952cdc707c9f0))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([741fb86](https://github.com/promhippie/scw_exporter/commit/741fb86a32f834050b8b74b9e8b8bd296b0f33c7))
+
 ## [2.2.12](https://github.com/promhippie/scw_exporter/compare/v2.2.11...v2.2.12) (2025-11-10)
 
 
