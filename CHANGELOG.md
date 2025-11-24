@@ -1,5 +1,42 @@
 # Changelog
 
+## [2.2.14](https://github.com/promhippie/scw_exporter/compare/v2.2.13...v2.2.14) (2025-11-24)
+
+
+### Bugfixes
+
+* **deps:** pin quay.io/promhippie/scw-exporter docker tag to 9a2e948 ([7f11e5c](https://github.com/promhippie/scw_exporter/commit/7f11e5ced5bc87663c29e91ee191bd4125fc0428))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 01416b0 ([f4e58fe](https://github.com/promhippie/scw_exporter/commit/f4e58fedad01795b50a29c740665ca0b8d1ace35))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 02b2af3 ([80043a3](https://github.com/promhippie/scw_exporter/commit/80043a3a6879251ac576cdd1a0323c3856ce291c))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 09f034c ([995293c](https://github.com/promhippie/scw_exporter/commit/995293c4b0f78763adbb212c8916ed54f4f1bfab))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 117aa95 ([1870787](https://github.com/promhippie/scw_exporter/commit/18707877f7aca6f434200f2194fc231817123347))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 1cdabb7 ([1fce0c8](https://github.com/promhippie/scw_exporter/commit/1fce0c821e959966b82551b43a2fa49f2b69efa9))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 1fe7c11 ([fb8679c](https://github.com/promhippie/scw_exporter/commit/fb8679ccef90daae98e3249e700f8c9a4bbc2d85))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 3073dee ([afcd6df](https://github.com/promhippie/scw_exporter/commit/afcd6df991473f7ceedb82c481cb6890aec1d180))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 376fc6b ([9c94c84](https://github.com/promhippie/scw_exporter/commit/9c94c84d938b22d646c7e5e2c51faa083c662a25))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 37b0183 ([dec75ee](https://github.com/promhippie/scw_exporter/commit/dec75eec45b60daec47464c8dcee9accbdd6ea37))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 4a63570 ([2fb44c1](https://github.com/promhippie/scw_exporter/commit/2fb44c127900f904d7140847312840e53501b026))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 4ada2cf ([d32e240](https://github.com/promhippie/scw_exporter/commit/d32e240d93d9a2b61fff279b5aa87749b7fbac0a))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 4dd00a3 ([55beffe](https://github.com/promhippie/scw_exporter/commit/55beffee30f426b54a19b89cde62a33c6b489903))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 6260c61 ([a6f2e7e](https://github.com/promhippie/scw_exporter/commit/a6f2e7e220a17942d5550fb0e6ea5a04e8efc962))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 74a90b4 ([136eac1](https://github.com/promhippie/scw_exporter/commit/136eac1cb398b2e4e0fb6db71f745401ea020527))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 770268e ([37f9da2](https://github.com/promhippie/scw_exporter/commit/37f9da274f7ee169d05b73553e066a790d64dd6f))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 82ff303 ([e04f849](https://github.com/promhippie/scw_exporter/commit/e04f849b4d02273634501c74a1350c23d0dea538))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 8a08870 ([d0e3e2a](https://github.com/promhippie/scw_exporter/commit/d0e3e2a83cf8580669505a609b6e00f04e18cdca))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 8cace92 ([0d8107c](https://github.com/promhippie/scw_exporter/commit/0d8107ccb93c8b49d3b6e379d5ad4014a5805f9d))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 92fcce1 ([2319e6e](https://github.com/promhippie/scw_exporter/commit/2319e6e8e2d44bdc724bea195cf67ddd05daa648))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 9503463 ([6f40984](https://github.com/promhippie/scw_exporter/commit/6f409842793709ab9b6ea7bdd6d64e5efcca3d01))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to aca5386 ([c7329e5](https://github.com/promhippie/scw_exporter/commit/c7329e57e42a6491238b796da0867a5f39710f3f))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to ca62b5b ([23e35ed](https://github.com/promhippie/scw_exporter/commit/23e35eddcf53db3332508e3119fd39ef822b3a92))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to e06e241 ([f89296a](https://github.com/promhippie/scw_exporter/commit/f89296afd37bafa0b5aa285b366f4c38e9d1f503))
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to f599818 ([5992023](https://github.com/promhippie/scw_exporter/commit/59920238e2d441baf13262bc20b3c01f46d3c27d))
+
+
+### Miscellaneous
+
+* **deps:** bump golang.org/x/crypto from 0.44.0 to 0.45.0 ([4c39985](https://github.com/promhippie/scw_exporter/commit/4c399858013dfa045832f287f20e604016ef4750))
+* **flake:** updated lockfile [skip ci] ([e8b5fce](https://github.com/promhippie/scw_exporter/commit/e8b5fce17772ed1a7c9b7c42ba05ff984d78014b))
+
 ## [2.2.13](https://github.com/promhippie/scw_exporter/compare/v2.2.12...v2.2.13) (2025-11-17)
 
 
