@@ -18,6 +18,6 @@ secretGenerator:
 images:
   - name: scw-exporter
     newName: quay.io/promhippie/scw-exporter
-    newTag: latest@sha256:812144210029806abaa7092526432d801423318d9b40ffbc6afbfc9193650696
+    newTag: 2.2.14
 
 ...
