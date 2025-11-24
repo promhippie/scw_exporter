@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.15](https://github.com/promhippie/scw_exporter/compare/v2.2.14...v2.2.15) (2025-11-24)
+
+
+### Bugfixes
+
+* **deps:** update quay.io/promhippie/scw-exporter:latest docker digest to 8121442 ([c20da4d](https://github.com/promhippie/scw_exporter/commit/c20da4da714df3378e6b7afeaeeb80799dd5e3fd))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([84c174e](https://github.com/promhippie/scw_exporter/commit/84c174e2f90db64f40951ccab02719040a080696))
+
 ## [2.2.14](https://github.com/promhippie/scw_exporter/compare/v2.2.13...v2.2.14) (2025-11-24)
 
 
