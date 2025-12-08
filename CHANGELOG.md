@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.3.0](https://github.com/promhippie/scw_exporter/compare/v2.2.15...v2.3.0) (2025-12-08)
+
+
+### Features
+
+* **minor:** update alpine docker tag to v3.23 ([#233](https://github.com/promhippie/scw_exporter/issues/233)) ([5c3755d](https://github.com/promhippie/scw_exporter/commit/5c3755d93607015b930a17961a44625b5731da95))
+
+
+### Bugfixes
+
+* **patch:** update golang docker tag to v1.25.5 ([#232](https://github.com/promhippie/scw_exporter/issues/232)) ([8456c9a](https://github.com/promhippie/scw_exporter/commit/8456c9a35df9b2ce19f80c966d45b2ff22d5fa1c))
+
+
+### Miscellaneous
+
+* drop issue and pull request template ([acd499d](https://github.com/promhippie/scw_exporter/commit/acd499de4f9d9460174063eeb77a0bd50b7e27a5))
+* **flake:** updated lockfile [skip ci] ([5de2082](https://github.com/promhippie/scw_exporter/commit/5de208250099f9df6a2b2cd99eddabb2704f7f53))
+* just format some yaml comment ([628772c](https://github.com/promhippie/scw_exporter/commit/628772cbe087e986c46da963bc8e5c4dfe66265e))
+
 ## [2.2.15](https://github.com/promhippie/scw_exporter/compare/v2.2.14...v2.2.15) (2025-11-24)
 
 
