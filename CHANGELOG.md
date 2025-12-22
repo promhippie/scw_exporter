@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.3.1](https://github.com/promhippie/scw_exporter/compare/v2.3.0...v2.3.1) (2025-12-22)
+
+
+### Bugfixes
+
+* **deps:** update alpine:3.23 docker digest to 865b95f ([#244](https://github.com/promhippie/scw_exporter/issues/244)) ([4cee81e](https://github.com/promhippie/scw_exporter/commit/4cee81ed9bdd3ffbcd3ab327b14ffe6e915aaa27))
+* **deps:** update alpine:3.23 docker digest to be171b5 ([#243](https://github.com/promhippie/scw_exporter/issues/243)) ([68112a6](https://github.com/promhippie/scw_exporter/commit/68112a6caeea4beffb03ec12536d566a7ea50c38))
+* **patch:** update module github.com/scaleway/scaleway-sdk-go to v1.0.0-beta.36 ([#245](https://github.com/promhippie/scw_exporter/issues/245)) ([c0b1f06](https://github.com/promhippie/scw_exporter/commit/c0b1f06bd3f237b05932a964b0ba909aaddeab45))
+
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([f797b8b](https://github.com/promhippie/scw_exporter/commit/f797b8b6ac1280375f99c91d50fa0f680fb50b1a))
+* **flake:** updated lockfile [skip ci] ([4c4afcd](https://github.com/promhippie/scw_exporter/commit/4c4afcdb0959814c9ddfcb0a1fe48e0d381b13cb))
+
 ## [2.3.0](https://github.com/promhippie/scw_exporter/compare/v2.2.15...v2.3.0) (2025-12-08)
 
 
