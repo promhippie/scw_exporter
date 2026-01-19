@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.3.3](https://github.com/promhippie/scw_exporter/compare/v2.3.2...v2.3.3) (2026-01-19)
+
+### Bugfixes
+
+* **patch:** update module github.com/go-chi/chi/v5 to v5.2.4 ([#255](https://github.com/promhippie/scw_exporter/issues/255)) ([b8a09cd](https://github.com/promhippie/scw_exporter/commit/b8a09cdf7907453cc22c4ed1d3df6c268d4b2164))
+* **patch:** update module github.com/urfave/cli/v3 to v3.6.2 ([#257](https://github.com/promhippie/scw_exporter/issues/257)) ([9b07917](https://github.com/promhippie/scw_exporter/commit/9b079171ff865a0e11fd292685596a9cbb8f29c8))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([f816107](https://github.com/promhippie/scw_exporter/commit/f816107bbe1a5a8b250d04e8cdac012b15e382bd))
+
 ## [2.3.2](https://github.com/promhippie/scw_exporter/compare/v2.3.1...v2.3.2) (2026-01-12)
 
 ### Bugfixes
