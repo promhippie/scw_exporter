@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.3.4](https://github.com/promhippie/scw_exporter/compare/v2.3.3...v2.3.4) (2026-02-02)
+
+### Bugfixes
+
+* **deps:** update alpine:3.23 docker digest to 2510918 ([#258](https://github.com/promhippie/scw_exporter/issues/258)) ([843d8db](https://github.com/promhippie/scw_exporter/commit/843d8db6cc988ecc4587b70b57c27986db781967))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([e7378ed](https://github.com/promhippie/scw_exporter/commit/e7378eda607404fcdda82d41068ade3311b078be))
+* **flake:** updated lockfile [skip ci] ([07babbd](https://github.com/promhippie/scw_exporter/commit/07babbd28e46c7cf14e84b40c8ee94f526b60bb2))
+
 ## [2.3.3](https://github.com/promhippie/scw_exporter/compare/v2.3.2...v2.3.3) (2026-01-19)
 
 ### Bugfixes
