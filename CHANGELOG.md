@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.3.5](https://github.com/promhippie/scw_exporter/compare/v2.3.4...v2.3.5) (2026-02-09)
+
+### Bugfixes
+
+* **patch:** update module github.com/go-chi/chi/v5 to v5.2.5 ([#260](https://github.com/promhippie/scw_exporter/issues/260)) ([5af15eb](https://github.com/promhippie/scw_exporter/commit/5af15ebb100e1e74c43efff82a20c93fb94509ba))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([a77445a](https://github.com/promhippie/scw_exporter/commit/a77445a9de2ba6979fa0444a4b5eef074a0f2785))
+
 ## [2.3.4](https://github.com/promhippie/scw_exporter/compare/v2.3.3...v2.3.4) (2026-02-02)
 
 ### Bugfixes
