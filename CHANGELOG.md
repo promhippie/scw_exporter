@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.4.0](https://github.com/promhippie/scw_exporter/compare/v2.3.5...v2.4.0) (2026-03-02)
+
+### Features
+
+* **minor:** update module github.com/urfave/cli/v3 to v3.7.0 ([#262](https://github.com/promhippie/scw_exporter/issues/262)) ([a33140e](https://github.com/promhippie/scw_exporter/commit/a33140e155aaf51ac16ea976c2414235576be63e))
+
+### Miscellaneous
+
+* enable skip-package-name-collision-with-go-std for revive ([efb51c3](https://github.com/promhippie/scw_exporter/commit/efb51c33aa385a676626bc6950e0a23b7cff0942))
+* **flake:** updated lockfile [skip ci] ([29e8a5f](https://github.com/promhippie/scw_exporter/commit/29e8a5f54736e63e168600fde8ad2ed93ad4b294))
+* **flake:** updated lockfile [skip ci] ([a7454c4](https://github.com/promhippie/scw_exporter/commit/a7454c4494492d7102749fb3d30017bb58fbeed9))
+* **flake:** updated lockfile [skip ci] ([2efca47](https://github.com/promhippie/scw_exporter/commit/2efca477731a8a58a0cb32bdfb34e1b29958c815))
+* replace nixfmt package ([10baf6c](https://github.com/promhippie/scw_exporter/commit/10baf6cc824858182215139fe73efaad2021a61b))
+
 ## [2.3.5](https://github.com/promhippie/scw_exporter/compare/v2.3.4...v2.3.5) (2026-02-09)
 
 ### Bugfixes
