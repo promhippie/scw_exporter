@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.6.0](https://github.com/promhippie/scw_exporter/compare/v2.5.0...v2.6.0) (2026-04-06)
+
+### Features
+
+* **minor:** update module github.com/prometheus/exporter-toolkit to v0.16.0 ([#271](https://github.com/promhippie/scw_exporter/issues/271)) ([3c879c0](https://github.com/promhippie/scw_exporter/commit/3c879c0832929d8b1716317fc73f3e5694ff3b50))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([c39f384](https://github.com/promhippie/scw_exporter/commit/c39f3848789c7a4e006f39e50e00fa1b87b11571))
+
 ## [2.5.0](https://github.com/promhippie/scw_exporter/compare/v2.4.0...v2.5.0) (2026-03-30)
 
 ### Features
