@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.7.0](https://github.com/promhippie/scw_exporter/compare/v2.6.1...v2.7.0) (2026-05-18)
+
+### Features
+
+* **minor:** update module github.com/urfave/cli/v3 to v3.9.0 ([#280](https://github.com/promhippie/scw_exporter/issues/280)) ([7fe6707](https://github.com/promhippie/scw_exporter/commit/7fe670798cb8b0a862c2742f9b24b4678804f4f2))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([02b29cf](https://github.com/promhippie/scw_exporter/commit/02b29cfdeeaacb5b7f42ca151e39b3a612b6e05e))
+* **flake:** updated lockfile [skip ci] ([2e3db32](https://github.com/promhippie/scw_exporter/commit/2e3db32eb1eea3aff3fdecb8fa1f8e6f0aab5f93))
+* **flake:** updated lockfile [skip ci] ([7f15372](https://github.com/promhippie/scw_exporter/commit/7f153721dc249a143004074768f5496758dcef7d))
+* **flake:** updated lockfile [skip ci] ([ac685f4](https://github.com/promhippie/scw_exporter/commit/ac685f4f8100a4f830994408140d050ea3ea3b7d))
+
 ## [2.6.1](https://github.com/promhippie/scw_exporter/compare/v2.6.0...v2.6.1) (2026-04-20)
 
 ### Bugfixes
