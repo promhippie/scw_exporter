@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.8.0](https://github.com/promhippie/scw_exporter/compare/v2.7.0...v2.8.0) (2026-05-25)
+
+### Features
+
+* **minor:** update module github.com/go-chi/chi/v5 to v5.3.0 ([#281](https://github.com/promhippie/scw_exporter/issues/281)) ([ed216c3](https://github.com/promhippie/scw_exporter/commit/ed216c3125509cd4d1299acec7cbe972ac08e01a))
+* upgrade required go version to 1.26 ([8db2aa2](https://github.com/promhippie/scw_exporter/commit/8db2aa2ba08016c067172214ce2f957d63c8f086))
+
+### Bugfixes
+
+* **deps:** pin golang docker tag to 91eda97 ([#282](https://github.com/promhippie/scw_exporter/issues/282)) ([54859bc](https://github.com/promhippie/scw_exporter/commit/54859bc17ef1329bb87d89069736a1511a18ac40))
+* enforce 1.26.3 for docker image ([1b43a64](https://github.com/promhippie/scw_exporter/commit/1b43a64af707e25d89ef18050a5391f41bd010ca))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([dd1c8d0](https://github.com/promhippie/scw_exporter/commit/dd1c8d08f358c98a070358174f275f17d84c9d13))
+* switch flake input to 25.11 release ([094b949](https://github.com/promhippie/scw_exporter/commit/094b949de5c20c7dd5fb85629909d8340d92c8f1))
+
 ## [2.7.0](https://github.com/promhippie/scw_exporter/compare/v2.6.1...v2.7.0) (2026-05-18)
 
 ### Features
