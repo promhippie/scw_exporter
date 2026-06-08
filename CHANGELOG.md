@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.8.1](https://github.com/promhippie/scw_exporter/compare/v2.8.0...v2.8.1) (2026-06-08)
+
+### Bugfixes
+
+* **deps:** update docker digests ([#284](https://github.com/promhippie/scw_exporter/issues/284)) ([d645c69](https://github.com/promhippie/scw_exporter/commit/d645c692ce1490a2ee97d597bbaa7f098c758946))
+* **patch:** update golang docker tag to v1.26.4 ([#283](https://github.com/promhippie/scw_exporter/issues/283)) ([c15f56f](https://github.com/promhippie/scw_exporter/commit/c15f56fd157b5366c17544422fdc2e0f6e280c01))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([dc00c12](https://github.com/promhippie/scw_exporter/commit/dc00c12803645d82418c47adc3d91480b5ac45d9))
+* **flake:** updated lockfile [skip ci] ([161b24a](https://github.com/promhippie/scw_exporter/commit/161b24a795a52ed326a8e75c914bb0a7173adbf4))
+
 ## [2.8.0](https://github.com/promhippie/scw_exporter/compare/v2.7.0...v2.8.0) (2026-05-25)
 
 ### Features
