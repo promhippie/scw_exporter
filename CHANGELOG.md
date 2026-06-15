@@ -1,5 +1,23 @@
 # Changelog
 
+## [2.9.0](https://github.com/promhippie/scw_exporter/compare/v2.8.1...v2.9.0) (2026-06-15)
+
+### Features
+
+* **minor:** update alpine docker tag to v3.24 ([#285](https://github.com/promhippie/scw_exporter/issues/285)) ([cd59710](https://github.com/promhippie/scw_exporter/commit/cd59710eb4a9eb6e7da9bbeaf07d523712559750))
+* **minor:** update module github.com/urfave/cli/v3 to v3.10.0 ([#290](https://github.com/promhippie/scw_exporter/issues/290)) ([3d1d4d6](https://github.com/promhippie/scw_exporter/commit/3d1d4d6d3943bcd7f34807394ab560647d2afe81))
+
+### Bugfixes
+
+* **deps:** update docker digests ([5632a71](https://github.com/promhippie/scw_exporter/commit/5632a71857c1aee73597dca730c0539ebec44280))
+* **deps:** update docker digests ([1a50c6b](https://github.com/promhippie/scw_exporter/commit/1a50c6bedbd2a6be806e0445190da17a71b26ad1))
+* **deps:** update docker digests ([#289](https://github.com/promhippie/scw_exporter/issues/289)) ([f43bc17](https://github.com/promhippie/scw_exporter/commit/f43bc17e89dc89147c9812b552c7631413e11e9c))
+* **patch:** update module github.com/urfave/cli/v3 to v3.9.1 ([#287](https://github.com/promhippie/scw_exporter/issues/287)) ([6ed7f4a](https://github.com/promhippie/scw_exporter/commit/6ed7f4ab317649eeb618be1674b45e47a3da5dcb))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([ca2f72c](https://github.com/promhippie/scw_exporter/commit/ca2f72caaf87fc9a52e78e18ca9a52b2246744a2))
+
 ## [2.8.1](https://github.com/promhippie/scw_exporter/compare/v2.8.0...v2.8.1) (2026-06-08)
 
 ### Bugfixes
