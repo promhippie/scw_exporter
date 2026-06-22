@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.9.1](https://github.com/promhippie/scw_exporter/compare/v2.9.0...v2.9.1) (2026-06-22)
+
+### Bugfixes
+
+* **deps:** update docker digests ([#291](https://github.com/promhippie/scw_exporter/issues/291)) ([e2fe3c1](https://github.com/promhippie/scw_exporter/commit/e2fe3c1a411ea4882c939ebdab4ec62ac266976b))
+* **deps:** update docker digests ([#292](https://github.com/promhippie/scw_exporter/issues/292)) ([2ce4ef8](https://github.com/promhippie/scw_exporter/commit/2ce4ef8b25bbc8838455f161dfe7f07d69005b5d))
+
+### Miscellaneous
+
+* **flake:** updated lockfile [skip ci] ([84f3e9c](https://github.com/promhippie/scw_exporter/commit/84f3e9c1ddce8df7dc0c8b3080a58bd765623ce8))
+
 ## [2.9.0](https://github.com/promhippie/scw_exporter/compare/v2.8.1...v2.9.0) (2026-06-15)
 
 ### Features
