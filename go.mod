@@ -9,7 +9,7 @@ require (
 	github.com/oklog/run v1.2.0
 	github.com/prometheus/client_golang v1.24.1
 	github.com/prometheus/exporter-toolkit v0.17.1
-	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.36
+	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.37
 	github.com/stretchr/testify v1.11.1
 	github.com/urfave/cli/v3 v3.10.1
 )
