@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.12.0](https://github.com/promhippie/scw_exporter/compare/v2.11.1...v2.12.0) (2026-08-10)
+
+### Features
+
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.21.0 ([e5449a6](https://github.com/promhippie/scw_exporter/commit/e5449a67d45d947d9a282816027e245def83ff41))
+* **minor:** update dependency golangci-lint to v2.12.2 ([2e330b8](https://github.com/promhippie/scw_exporter/commit/2e330b80955eb3768b9ac33ea080748914f12bf0))
+* restructure repo and build processes ([1a7b91d](https://github.com/promhippie/scw_exporter/commit/1a7b91d667d8c562497633a8e48523b8e3e5eefd))
+
+### Bugfixes
+
+* **patch:** update dependency cosign to v3.1.3 ([#312](https://github.com/promhippie/scw_exporter/issues/312)) ([989a4ec](https://github.com/promhippie/scw_exporter/commit/989a4ec4c89ea8ab5190dbe8bba21fcd9c02daf4))
+
 ## [2.11.1](https://github.com/promhippie/scw_exporter/compare/v2.11.0...v2.11.1) (2026-08-03)
 
 ## [2.11.0](https://github.com/promhippie/scw_exporter/compare/v2.10.1...v2.11.0) (2026-07-27)
