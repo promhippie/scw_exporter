@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.13.0](https://github.com/promhippie/scw_exporter/compare/v2.12.0...v2.13.0) (2026-08-17)
+
+### Features
+
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.22.0 ([#315](https://github.com/promhippie/scw_exporter/issues/315)) ([326ca6d](https://github.com/promhippie/scw_exporter/commit/326ca6dc22be41efbc40ec24f06785c4e1e96f2e))
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.23.0 ([#319](https://github.com/promhippie/scw_exporter/issues/319)) ([37d3f48](https://github.com/promhippie/scw_exporter/commit/37d3f48f5373a67ded9ca2b89b63db74a8fc1636))
+* **minor:** update dependency hugo-extended to v0.165.0 ([#316](https://github.com/promhippie/scw_exporter/issues/316)) ([df3638f](https://github.com/promhippie/scw_exporter/commit/df3638f9a61f2212bdb9f2cf7e08101629bc7801))
+* **minor:** update module github.com/urfave/cli/v3 to v3.11.0 ([#320](https://github.com/promhippie/scw_exporter/issues/320)) ([971720b](https://github.com/promhippie/scw_exporter/commit/971720bd43e672d60bcc9ca4861e60db797ab678))
+
+### Bugfixes
+
+* **deps:** update golang:1.26.6-alpine docker digest to 3889b42 ([#321](https://github.com/promhippie/scw_exporter/issues/321)) ([68ac59c](https://github.com/promhippie/scw_exporter/commit/68ac59c3dbf32f96f097387f21bc2731aa0a9c68))
+* **patch:** update dependency go to v1.26.6 ([#317](https://github.com/promhippie/scw_exporter/issues/317)) ([11f9b01](https://github.com/promhippie/scw_exporter/commit/11f9b0143a69b5598705cc9cfe6d34115c6b6ade))
+* **patch:** update dependency pre-commit to v4.6.2 ([#314](https://github.com/promhippie/scw_exporter/issues/314)) ([5109a01](https://github.com/promhippie/scw_exporter/commit/5109a0136b89d8dc521a4d19f1205f4d62eb6000))
+* **patch:** update golang docker tag to v1.26.6 ([#318](https://github.com/promhippie/scw_exporter/issues/318)) ([7c562a8](https://github.com/promhippie/scw_exporter/commit/7c562a865ef20755e5e8df098023654a12cfc3cd))
+
 ## [2.12.0](https://github.com/promhippie/scw_exporter/compare/v2.11.1...v2.12.0) (2026-08-10)
 
 ### Features
