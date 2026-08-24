@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.14.0](https://github.com/promhippie/scw_exporter/compare/v2.13.0...v2.14.0) (2026-08-24)
+
+### Features
+
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.24.0 ([#323](https://github.com/promhippie/scw_exporter/issues/323)) ([9d672c4](https://github.com/promhippie/scw_exporter/commit/9d672c4a1aa05ad4b5931b3ebe747c7903c2d0ac))
+* **minor:** update dependency golangci-lint to v2.13.0 ([#327](https://github.com/promhippie/scw_exporter/issues/327)) ([d5bf07e](https://github.com/promhippie/scw_exporter/commit/d5bf07edc6d08e42aafcb3937f184199799c630e))
+* **minor:** update dependency task to v3.53.1 ([#324](https://github.com/promhippie/scw_exporter/issues/324)) ([bdd4724](https://github.com/promhippie/scw_exporter/commit/bdd4724723a4ea77d8c0b2b40fc81993d478221d))
+* **minor:** update golang docker tag to v1.27.0 ([#328](https://github.com/promhippie/scw_exporter/issues/328)) ([1b4c5c1](https://github.com/promhippie/scw_exporter/commit/1b4c5c1b08a9316cef117625bbed8f1739c09ae8))
+* **minor:** update module github.com/stretchr/testify to v1.12.0 ([#322](https://github.com/promhippie/scw_exporter/issues/322)) ([2dfa6a0](https://github.com/promhippie/scw_exporter/commit/2dfa6a0bbc9047d8e1b4f465737217a33b73cc4a))
+
+### Bugfixes
+
+* **patch:** update dependency golangci-lint to v2.13.1 ([#329](https://github.com/promhippie/scw_exporter/issues/329)) ([d14e75b](https://github.com/promhippie/scw_exporter/commit/d14e75b207cc93337c6667b676fe073bdeac43fb))
+* **patch:** update module github.com/go-chi/chi/v5 to v5.3.2 ([#330](https://github.com/promhippie/scw_exporter/issues/330)) ([efd1c16](https://github.com/promhippie/scw_exporter/commit/efd1c16cf28b131767211b4bf579df2d6a0e1fb2))
+* **patch:** update module github.com/stretchr/testify to v1.12.1 ([#325](https://github.com/promhippie/scw_exporter/issues/325)) ([67b84e0](https://github.com/promhippie/scw_exporter/commit/67b84e0ca827ecb8238dc00c1cf7dcd37f14afb2))
+
 ## [2.13.0](https://github.com/promhippie/scw_exporter/compare/v2.12.0...v2.13.0) (2026-08-17)
 
 ### Features
