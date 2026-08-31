@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.15.0](https://github.com/promhippie/scw_exporter/compare/v2.14.0...v2.15.0) (2026-08-31)
+
+### Features
+
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.25.0 ([#333](https://github.com/promhippie/scw_exporter/issues/333)) ([f4ba22b](https://github.com/promhippie/scw_exporter/commit/f4ba22b221751144a28f823cdf82b3ef590c2f4c))
+* **minor:** update dependency github:cloudsmith-io/cloudsmith-cli to v1.26.0 ([#335](https://github.com/promhippie/scw_exporter/issues/335)) ([43c2c8a](https://github.com/promhippie/scw_exporter/commit/43c2c8a28fcbf5b6274e5c8260d545343803dd11))
+* **minor:** update dependency go to v1.27.0 ([#326](https://github.com/promhippie/scw_exporter/issues/326)) ([91bba3d](https://github.com/promhippie/scw_exporter/commit/91bba3dd9c7c8396017d94038fe5ef0baa35a6cb))
+* **minor:** update dependency goreleaser to v2.18.0 ([#331](https://github.com/promhippie/scw_exporter/issues/331)) ([69e31e0](https://github.com/promhippie/scw_exporter/commit/69e31e03f49b0324364d492a9b52f6dcf98a1f4e))
+* **minor:** update module github.com/prometheus/exporter-toolkit to v0.19.0 ([#334](https://github.com/promhippie/scw_exporter/issues/334)) ([b6ba6d5](https://github.com/promhippie/scw_exporter/commit/b6ba6d536cbe9cd7a878b383148fb9957c2d753a))
+
+### Bugfixes
+
+* **patch:** update dependency golangci-lint to v2.13.2 ([#336](https://github.com/promhippie/scw_exporter/issues/336)) ([cf40c85](https://github.com/promhippie/scw_exporter/commit/cf40c85af86e21802ac209a307715d7bb234b216))
+
 ## [2.14.0](https://github.com/promhippie/scw_exporter/compare/v2.13.0...v2.14.0) (2026-08-24)
 
 ### Features
