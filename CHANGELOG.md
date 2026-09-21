@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.16.0](https://github.com/promhippie/scw_exporter/compare/v2.15.1...v2.16.0) (2026-09-21)
+
+### Features
+
+* **minor:** update module github.com/urfave/cli/v3 to v3.12.0 ([#345](https://github.com/promhippie/scw_exporter/issues/345)) ([74a500b](https://github.com/promhippie/scw_exporter/commit/74a500bf967b97a15a2fe19d57530c4cecbf8767))
+* **minor:** update module github.com/urfave/cli/v3 to v3.13.0 ([#350](https://github.com/promhippie/scw_exporter/issues/350)) ([98ab8f5](https://github.com/promhippie/scw_exporter/commit/98ab8f5e816712ca14dd9230c9f304bf37ed8c79))
+
+### Bugfixes
+
+* **deps:** update alpine:3.24 docker digest to 294b683 ([#349](https://github.com/promhippie/scw_exporter/issues/349)) ([36a6a8b](https://github.com/promhippie/scw_exporter/commit/36a6a8b78134e219eef5bb6a284a381fe057e8e4))
+* **deps:** update docker digests ([#347](https://github.com/promhippie/scw_exporter/issues/347)) ([1f987d1](https://github.com/promhippie/scw_exporter/commit/1f987d153ef43fe4673d6d4c68d67a15f9e2a994))
+* **deps:** update docker digests ([#348](https://github.com/promhippie/scw_exporter/issues/348)) ([5d32f93](https://github.com/promhippie/scw_exporter/commit/5d32f93b8c7e7b717bc1b4ed0fdcccdba49e5ebe))
+
 ## [2.15.1](https://github.com/promhippie/scw_exporter/compare/v2.15.0...v2.15.1) (2026-09-07)
 
 ### Bugfixes
