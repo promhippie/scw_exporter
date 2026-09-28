@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.17.0](https://github.com/promhippie/scw_exporter/compare/v2.16.0...v2.17.0) (2026-09-28)
+
+### Features
+
+* **minor:** update module github.com/prometheus/exporter-toolkit to v0.20.0 ([#352](https://github.com/promhippie/scw_exporter/issues/352)) ([755d92c](https://github.com/promhippie/scw_exporter/commit/755d92cde51adc68da795701e2893f8aaa87d19d))
+
+### Bugfixes
+
+* **deps:** update golang:1.27.1-alpine docker digest to 8a5910f ([#351](https://github.com/promhippie/scw_exporter/issues/351)) ([a7f1b0d](https://github.com/promhippie/scw_exporter/commit/a7f1b0d29e58f37a093232cf6874120cae08ef68))
+
 ## [2.16.0](https://github.com/promhippie/scw_exporter/compare/v2.15.1...v2.16.0) (2026-09-21)
 
 ### Features
