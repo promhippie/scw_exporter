@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.18.0](https://github.com/promhippie/scw_exporter/compare/v2.17.0...v2.18.0) (2026-10-05)
+
+### Features
+
+* **minor:** update module github.com/urfave/cli/v3 to v3.14.0 ([#359](https://github.com/promhippie/scw_exporter/issues/359)) ([98ddc69](https://github.com/promhippie/scw_exporter/commit/98ddc69524fb2a97f4875189e0f041393386e5b6))
+
 ## [2.17.0](https://github.com/promhippie/scw_exporter/compare/v2.16.0...v2.17.0) (2026-09-28)
 
 ### Features
