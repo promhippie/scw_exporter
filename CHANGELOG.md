@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.19.0](https://github.com/promhippie/scw_exporter/compare/v2.18.0...v2.19.0) (2026-10-12)
+
+### Features
+
+* **minor:** update module github.com/go-chi/chi/v5 to v5.4.0 ([#369](https://github.com/promhippie/scw_exporter/issues/369)) ([d6bffab](https://github.com/promhippie/scw_exporter/commit/d6bffabcfec4d4f98d0aebd6a97cbbf899cdbcbd))
+* **minor:** update module github.com/prometheus/client_golang to v1.25.0 ([#363](https://github.com/promhippie/scw_exporter/issues/363)) ([a96e512](https://github.com/promhippie/scw_exporter/commit/a96e512d5391ee88306bfc534c11906dd7d6d234))
+* **minor:** update module github.com/scaleway/scaleway-sdk-go to v1.38.0 ([#361](https://github.com/promhippie/scw_exporter/issues/361)) ([0eaa380](https://github.com/promhippie/scw_exporter/commit/0eaa38052b82b492a755bd170777416686ddc8b5))
+* **minor:** update module github.com/scaleway/scaleway-sdk-go to v1.39.0 ([#368](https://github.com/promhippie/scw_exporter/issues/368)) ([070f78a](https://github.com/promhippie/scw_exporter/commit/070f78aa8155978c770141bfe85faec91228d7e7))
+
+### Bugfixes
+
+* **deps:** update golang:1.27.2-alpine docker digest to f92b6ef ([#367](https://github.com/promhippie/scw_exporter/issues/367)) ([137bf54](https://github.com/promhippie/scw_exporter/commit/137bf543b91112b4cf44943702d894d62321bf6d))
+* **patch:** update golang docker tag to v1.27.2 ([#365](https://github.com/promhippie/scw_exporter/issues/365)) ([d9fcf4b](https://github.com/promhippie/scw_exporter/commit/d9fcf4bf4b619f43422fe5253e614e647633d9a8))
+
 ## [2.18.0](https://github.com/promhippie/scw_exporter/compare/v2.17.0...v2.18.0) (2026-10-05)
 
 ### Features
