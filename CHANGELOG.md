@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.20.0](https://github.com/promhippie/scw_exporter/compare/v2.19.0...v2.20.0) (2026-10-19)
+
+### Features
+
+* **minor:** update module github.com/go-chi/chi/v5 to v5.5.0 ([#372](https://github.com/promhippie/scw_exporter/issues/372)) ([61ab2fd](https://github.com/promhippie/scw_exporter/commit/61ab2fd8e472cf54e12c9b0ca56049b17d15be43))
+
 ## [2.19.0](https://github.com/promhippie/scw_exporter/compare/v2.18.0...v2.19.0) (2026-10-12)
 
 ### Features
