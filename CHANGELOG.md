@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.20.1](https://github.com/promhippie/scw_exporter/compare/v2.20.0...v2.20.1) (2026-10-26)
+
+### Bugfixes
+
+* **deps:** update alpine:3.24 docker digest to 71e9b7b ([#383](https://github.com/promhippie/scw_exporter/issues/383)) ([31ea942](https://github.com/promhippie/scw_exporter/commit/31ea94243168bad0aa5348ddf4325aee9c7317f9))
+* **deps:** update alpine:3.24 docker digest to be26560 ([#386](https://github.com/promhippie/scw_exporter/issues/386)) ([63f40a7](https://github.com/promhippie/scw_exporter/commit/63f40a757a5ebcdd7e84bd13940cb0dfdce8e77d))
+* **deps:** update alpine:3.24 docker digest to c6b073f ([#381](https://github.com/promhippie/scw_exporter/issues/381)) ([3387311](https://github.com/promhippie/scw_exporter/commit/3387311528e5c9ad632aefb3db35cc76c816cfb0))
+* **deps:** update golang:1.27.3-alpine docker digest to d530cf6 ([#382](https://github.com/promhippie/scw_exporter/issues/382)) ([366c7da](https://github.com/promhippie/scw_exporter/commit/366c7daf9712880e32eac824fda421170620733d))
+* **patch:** update golang docker tag to v1.27.3 ([#379](https://github.com/promhippie/scw_exporter/issues/379)) ([edb3651](https://github.com/promhippie/scw_exporter/commit/edb3651cde76fd406cf2398f201a01e1d6449b2f))
+
 ## [2.20.0](https://github.com/promhippie/scw_exporter/compare/v2.19.0...v2.20.0) (2026-10-19)
 
 ### Features
