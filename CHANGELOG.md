@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.20.2](https://github.com/promhippie/scw_exporter/compare/v2.20.1...v2.20.2) (2026-11-02)
+
+### Bugfixes
+
+* **deps:** update golang:1.27.3-alpine docker digest to d200d2d ([#387](https://github.com/promhippie/scw_exporter/issues/387)) ([670001a](https://github.com/promhippie/scw_exporter/commit/670001ab477f6afc8b3332b1028a7b97088e125d))
+
 ## [2.20.1](https://github.com/promhippie/scw_exporter/compare/v2.20.0...v2.20.1) (2026-10-26)
 
 ### Bugfixes
