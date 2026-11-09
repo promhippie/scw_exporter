@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.20.3](https://github.com/promhippie/scw_exporter/compare/v2.20.2...v2.20.3) (2026-11-09)
+
+### Bugfixes
+
+* **deps:** update alpine:3.24 docker digest to f59abe6 ([#394](https://github.com/promhippie/scw_exporter/issues/394)) ([0ca6d2f](https://github.com/promhippie/scw_exporter/commit/0ca6d2ffbd61a83a0e0f1a873f42bbf094051a76))
+* **deps:** update docker digests ([#393](https://github.com/promhippie/scw_exporter/issues/393)) ([e7c6908](https://github.com/promhippie/scw_exporter/commit/e7c6908cd7453953904babe89142daa36901f134))
+
 ## [2.20.2](https://github.com/promhippie/scw_exporter/compare/v2.20.1...v2.20.2) (2026-11-02)
 
 ### Bugfixes
