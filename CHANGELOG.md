@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.21.0](https://github.com/promhippie/scw_exporter/compare/v2.20.4...v2.21.0) (2026-11-23)
+
+### Features
+
+* **minor:** update module github.com/prometheus/exporter-toolkit to v0.21.0 ([#407](https://github.com/promhippie/scw_exporter/issues/407)) ([df59cfc](https://github.com/promhippie/scw_exporter/commit/df59cfc5e6cbf66f49b9710c1020e48133caca19))
+* **minor:** update module github.com/scaleway/scaleway-sdk-go to v1.40.0 ([#408](https://github.com/promhippie/scw_exporter/issues/408)) ([01e60e7](https://github.com/promhippie/scw_exporter/commit/01e60e79629b7449479fefadbe748084951a7325))
+* switch to plain hugo and resolve deprecations ([6c71b5f](https://github.com/promhippie/scw_exporter/commit/6c71b5fbbf82033749c7346d079a9d514049bfd0))
+
 ## [2.20.4](https://github.com/promhippie/scw_exporter/compare/v2.20.3...v2.20.4) (2026-11-16)
 
 ### Bugfixes
