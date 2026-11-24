@@ -396,8 +396,8 @@ github.com/sashamelentyev/interfacebloat v1.1.0 h1:xdRdJp0irL086OyW1H/RTZTr1h/tM
 github.com/sashamelentyev/interfacebloat v1.1.0/go.mod h1:+Y9yU5YdTkrNvoX0xHc84dxiN1iBi9+G8zZIhPVoNjQ=
 github.com/sashamelentyev/usestdlibvars v1.29.0 h1:8J0MoRrw4/NAXtjQqTHrbW9NN+3iMf7Knkq057v4XOQ=
 github.com/sashamelentyev/usestdlibvars v1.29.0/go.mod h1:8PpnjHMk5VdeWlVb4wCdrB8PNbLqZ3wBZTZWkrpZZL8=
-github.com/scaleway/scaleway-sdk-go v1.40.0 h1:OaMDf+uv5ehaRmu0ggi7k/KRP9QN6tUUOJ9wYh40lkc=
-github.com/scaleway/scaleway-sdk-go v1.40.0/go.mod h1:V7TfEMm3mctsBWYkWVNAW8R6f1KjFUtNgXdoD05onRg=
+github.com/scaleway/scaleway-sdk-go v1.40.1 h1:zf/J64NZb6I1C8gDbikl8Mw0UjnBs9Hty9S+wQWpM0M=
+github.com/scaleway/scaleway-sdk-go v1.40.1/go.mod h1:V7TfEMm3mctsBWYkWVNAW8R6f1KjFUtNgXdoD05onRg=
 github.com/securego/gosec/v2 v2.29.0 h1:pF2HSLcnY5voqpxQumEe0O5YAAbvF4Syu4qeIewpLyc=
 github.com/securego/gosec/v2 v2.29.0/go.mod h1:47C7ej+L2bC1NOxteU2aCGnCi4cZaoKzRt5y9plIvuY=
 github.com/sergi/go-diff v1.2.0 h1:XU+rvMAioB0UC3q1MFrIQy4Vo5/4VsRDQQXHsEya6xQ=
